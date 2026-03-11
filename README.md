@@ -4,6 +4,8 @@ Enterprise-grade CSS component library for **Banks**, **FinTechs**, and **Insura
 
 Zero JavaScript dependencies. Drop in one CSS file and build production-ready interfaces immediately.
 
+**[Live Showcase →](https://sjoe77.github.io/sitara/showcase/)**
+
 ---
 
 ## Why Sitara?
@@ -134,7 +136,7 @@ The sidebar collapse is **CSS-only** — powered by the `<input type="checkbox">
 | **Navigation** | App banner, Sidebar (collapsible, grouped), Breadcrumb, Dropdown |
 | **Icons** | 70+ Lucide-compatible SVG icons with sizing helpers |
 
-Full documentation and live examples: open `showcase/index.html` in your browser.
+Full documentation and live examples: **[sjoe77.github.io/sitara/showcase](https://sjoe77.github.io/sitara/showcase/)** — or open `showcase/index.html` locally.
 
 ---
 
