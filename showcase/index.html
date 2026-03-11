@@ -83,11 +83,11 @@
 
       <!-- User avatar with dropdown -->
       <div class="st-dropdown">
-        <a href="#" class="st-banner__avatar st-dropdown__trigger" aria-label="User menu">RK</a>
+        <a href="#" class="st-banner__avatar st-dropdown__trigger" aria-label="User menu">SE</a>
         <div class="st-dropdown__menu" style="min-width:200px;">
           <div style="padding:var(--st-space-3) var(--st-space-4);border-bottom:1px solid var(--st-color-border);margin-bottom:var(--st-space-1\.5);">
             <div style="font-weight:600;font-size:var(--st-text-sm);color:var(--st-color-text);">Superhero Engineer</div>
-            <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);">rajesh@sitara.io</div>
+            <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);">hero@sitara.io</div>
           </div>
           <a href="#" class="st-dropdown__item">
             <svg class="st-dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -220,7 +220,7 @@
 
     <div class="st-sidebar__footer">
       <a href="#" class="st-sidebar__user">
-        <div class="st-sidebar__user-avatar">RK</div>
+        <div class="st-sidebar__user-avatar">SE</div>
         <div class="st-sidebar__user-info">
           <div class="st-sidebar__user-name">Superhero Engineer</div>
           <div class="st-sidebar__user-role">Administrator</div>
@@ -1191,11 +1191,11 @@
         <div class="sc-demo">
           <div class="sc-demo__label">Sizes</div>
           <div class="sc-demo__body" style="display:flex;align-items:center;gap:var(--st-space-4)">
-            <span class="st-avatar st-avatar--xs">RK</span>
-            <span class="st-avatar st-avatar--sm">RK</span>
-            <span class="st-avatar st-avatar--md">RK</span>
-            <span class="st-avatar st-avatar--lg">RK</span>
-            <span class="st-avatar st-avatar--xl">RK</span>
+            <span class="st-avatar st-avatar--xs">SE</span>
+            <span class="st-avatar st-avatar--sm">SE</span>
+            <span class="st-avatar st-avatar--md">SE</span>
+            <span class="st-avatar st-avatar--lg">SE</span>
+            <span class="st-avatar st-avatar--xl">SE</span>
           </div>
         </div>
 
@@ -1203,7 +1203,7 @@
           <div class="sc-demo__label">With Status</div>
           <div class="sc-demo__body" style="display:flex;align-items:center;gap:var(--st-space-5)">
             <div class="st-avatar-wrap">
-              <span class="st-avatar st-avatar--lg">RK</span>
+              <span class="st-avatar st-avatar--lg">SE</span>
               <span class="st-avatar-status st-avatar-status--online"></span>
             </div>
             <div class="st-avatar-wrap">
@@ -1228,7 +1228,7 @@
               <span class="st-avatar st-avatar--md" style="background:var(--st-info-50);color:var(--st-info-700)">+5</span>
               <span class="st-avatar st-avatar--md" style="background:var(--st-warning-50);color:var(--st-warning-700)">SP</span>
               <span class="st-avatar st-avatar--md" style="background:var(--st-danger-50);color:var(--st-danger-700)">AM</span>
-              <span class="st-avatar st-avatar--md">RK</span>
+              <span class="st-avatar st-avatar--md">SE</span>
             </div>
           </div>
         </div>
@@ -1710,8 +1710,11 @@
     e.preventDefault();
     var savedY = window.scrollY;
     location.hash = href.slice(1);
+    // Double rAF: browser scrolls between frames, second rAF runs after that
     requestAnimationFrame(function() {
-      window.scrollTo(0, savedY);
+      requestAnimationFrame(function() {
+        window.scrollTo(0, savedY);
+      });
     });
   });
 </script>

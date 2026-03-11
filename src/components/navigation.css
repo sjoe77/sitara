@@ -605,7 +605,8 @@
   pointer-events: none;
   transform: translateY(-8px) scale(0.97);
   transform-origin: top right;
-  transition: opacity var(--st-transition-base), transform var(--st-transition-base);
+  /* Delay close by 120ms — gives cursor time to move from trigger into menu */
+  transition: opacity var(--st-transition-base) 120ms, transform var(--st-transition-base) 120ms;
 }
 
 .st-dropdown:focus-within .st-dropdown__menu,
@@ -613,6 +614,7 @@
   opacity: 1;
   pointer-events: all;
   transform: translateY(0) scale(1);
+  transition-delay: 0ms;
 }
 
 .st-dropdown__menu--left {
