@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Sitara — Banking Theme
+   Conservative, trustworthy. Deep navy + gold. Think JPMorgan, Chase, HDFC.
+   Usage: <html data-theme="banking"> or any ancestor element.
+   ========================================================================== */
+
+[data-theme="banking"] {
+  /* Primary palette — deep navy */
+  --st-primary-50:  #EEF2FA;
+  --st-primary-100: #D5E0F2;
+  --st-primary-200: #AABDE4;
+  --st-primary-300: #7B99D2;
+  --st-primary-400: #4D74BE;
+  --st-primary-500: #2756A8;
+  --st-primary-600: #1A3A6B;
+  --st-primary-700: #122D55;
+  --st-primary-800: #0C2040;
+  --st-primary-900: #07142A;
+
+  /* Secondary — gold accent */
+  --st-secondary-300: #E8D070;
+  --st-secondary-400: #D4B84A;
+  --st-secondary-500: #C5A028;
+  --st-secondary-600: #A8861F;
+  --st-secondary-700: #8A6C16;
+
+  /* Semantic overrides */
+  --st-color-accent:        var(--st-primary-600);
+  --st-color-accent-hover:  var(--st-primary-700);
+  --st-color-accent-active: var(--st-primary-800);
+  --st-color-accent-subtle: var(--st-primary-50);
+  --st-color-accent-muted:  var(--st-primary-100);
+  --st-color-accent-border: var(--st-primary-200);
+  --st-color-accent-text:   var(--st-primary-700);
+  --st-color-accent-on:     #FFFFFF;
+
+  /* Gold secondary accent (use via st-accent-gold variables) */
+  --st-color-gold:           var(--st-secondary-500);
+  --st-color-gold-hover:     var(--st-secondary-600);
+  --st-color-gold-subtle:    #FBF6E9;
+  --st-color-gold-text:      var(--st-secondary-700);
+  --st-color-gold-on:        #FFFFFF;
+
+  /* Surfaces — crisp white with very slight blue tint */
+  --st-color-bg:             #F4F6FB;
+  --st-color-bg-subtle:      #EBEEf6;
+  --st-color-surface:        #FFFFFF;
+  --st-color-surface-raised: #FFFFFF;
+  --st-color-surface-sunken: #F4F6FB;
+
+  /* Text */
+  --st-color-text:           #0F1E35;
+  --st-color-text-secondary: #3A4F6B;
+  --st-color-text-tertiary:  #7B8CA8;
+  --st-color-text-disabled:  #B8C4D4;
+  --st-color-text-link:      var(--st-primary-600);
+  --st-color-text-link-hover: var(--st-primary-800);
+
+  /* Borders */
+  --st-color-border:        #D6DDE9;
+  --st-color-border-strong: #B8C4D4;
+  --st-color-border-subtle: #EBEEf6;
+  --st-color-border-accent: var(--st-primary-500);
+
+  /* Banner — dark navy */
+  --st-banner-bg:             var(--st-primary-700);
+  --st-banner-border:         var(--st-primary-800);
+  --st-banner-text:           #FFFFFF;
+  --st-banner-text-secondary: rgba(255,255,255,0.65);
+
+  /* Sidebar */
+  --st-sidebar-bg:           var(--st-primary-900);
+  --st-sidebar-border:       var(--st-primary-800);
+  --st-sidebar-text:         rgba(255,255,255,0.65);
+  --st-sidebar-text-active:  #FFFFFF;
+  --st-sidebar-bg-active:    rgba(197,160,40,0.15);
+  --st-sidebar-bg-hover:     rgba(255,255,255,0.06);
+  --st-sidebar-icon:         rgba(255,255,255,0.45);
+  --st-sidebar-icon-active:  var(--st-secondary-500);
+
+  /* Button radius — slightly more squared for banking formality */
+  --st-btn-radius: var(--st-radius-sm);
+
+  /* Input radius */
+  --st-input-radius: var(--st-radius-sm);
+
+  /* Card */
+  --st-card-radius: var(--st-radius-lg);
+  --st-card-shadow: 0 1px 4px 0 rgb(15 30 53 / 0.08), 0 1px 2px -1px rgb(15 30 53 / 0.06);
+}
+
+/* Banking dark mode */
+[data-theme="banking"][data-color-scheme="dark"],
+[data-theme="banking"].st-dark {
+  --st-color-bg:             #070D1A;
+  --st-color-bg-subtle:      #0C1526;
+  --st-color-surface:        #0F1E35;
+  --st-color-surface-raised: #162640;
+  --st-color-surface-sunken: #070D1A;
+
+  --st-color-text:           #EEF2FA;
+  --st-color-text-secondary: #8FAAC8;
+  --st-color-text-tertiary:  #4D6480;
+  --st-color-text-disabled:  #2A3A50;
+
+  --st-color-border:        #1E3355;
+  --st-color-border-strong: #2A4470;
+  --st-color-border-subtle: #0C1A2E;
+
+  --st-color-accent:        var(--st-primary-400);
+  --st-color-accent-hover:  var(--st-primary-300);
+  --st-color-accent-subtle: rgba(77, 116, 190, 0.12);
+  --st-color-accent-muted:  rgba(77, 116, 190, 0.20);
+  --st-color-accent-text:   var(--st-primary-300);
+}

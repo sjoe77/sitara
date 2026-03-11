@@ -1,0 +1,154 @@
+/* ==========================================================================
+   Sitara Design System — Main Bundle
+
+   Enterprise CSS component library for Banks, FinTechs, and Insurance.
+   Version: 1.0.0
+
+   Usage:
+     <link rel="stylesheet" href="sitara.css">
+
+   Theming:
+     <html data-theme="banking">   — Banking theme (navy + gold)
+     <html data-theme="fintech">   — FinTech theme (violet + cyan)
+     <html data-theme="insurance"> — Insurance theme (teal + amber)
+
+   Dark mode:
+     Add class "st-dark" or data-color-scheme="dark" to the themed element.
+   ========================================================================== */
+
+/* 1. Design Tokens (must come first) */
+@import "./tokens.css";
+
+/* 2. Themes (override tokens) */
+@import "./themes/banking.css";
+@import "./themes/fintech.css";
+@import "./themes/insurance.css";
+
+/* 3. CSS Reset */
+@import "./reset.css";
+
+/* 4. Components */
+@import "./components/buttons.css";
+@import "./components/forms.css";
+@import "./components/layout.css";
+@import "./components/navigation.css";
+@import "./components/interactive.css";
+@import "./components/data.css";
+@import "./components/icons.css";
+
+/* ==========================================================================
+   Utility classes (minimal — for one-off overrides)
+   ========================================================================== */
+
+/* Text */
+.st-text-primary   { color: var(--st-color-text); }
+.st-text-secondary { color: var(--st-color-text-secondary); }
+.st-text-tertiary  { color: var(--st-color-text-tertiary); }
+.st-text-accent    { color: var(--st-color-accent); }
+.st-text-success   { color: var(--st-color-success-text); }
+.st-text-warning   { color: var(--st-color-warning-text); }
+.st-text-danger    { color: var(--st-color-danger-text); }
+.st-text-info      { color: var(--st-color-info-text); }
+
+/* Font size */
+.st-text-xs  { font-size: var(--st-text-xs); }
+.st-text-sm  { font-size: var(--st-text-sm); }
+.st-text-md  { font-size: var(--st-text-md); }
+.st-text-lg  { font-size: var(--st-text-lg); }
+.st-text-xl  { font-size: var(--st-text-xl); }
+.st-text-2xl { font-size: var(--st-text-2xl); }
+.st-text-3xl { font-size: var(--st-text-3xl); }
+
+/* Font weight */
+.st-font-normal   { font-weight: var(--st-font-normal); }
+.st-font-medium   { font-weight: var(--st-font-medium); }
+.st-font-semibold { font-weight: var(--st-font-semibold); }
+.st-font-bold     { font-weight: var(--st-font-bold); }
+
+/* Alignment */
+.st-text-left   { text-align: left; }
+.st-text-center { text-align: center; }
+.st-text-right  { text-align: right; }
+
+/* Background */
+.st-bg-surface  { background: var(--st-color-surface); }
+.st-bg-subtle   { background: var(--st-color-bg-subtle); }
+.st-bg-accent   { background: var(--st-color-accent); color: var(--st-color-accent-on); }
+.st-bg-success  { background: var(--st-color-success-subtle); }
+.st-bg-warning  { background: var(--st-color-warning-subtle); }
+.st-bg-danger   { background: var(--st-color-danger-subtle); }
+
+/* Margin/Padding helpers */
+.st-m-0  { margin: 0; }
+.st-mt-0 { margin-top: 0; }
+.st-mb-0 { margin-bottom: 0; }
+.st-p-0  { padding: 0; }
+.st-p-4  { padding: var(--st-space-4); }
+.st-p-6  { padding: var(--st-space-6); }
+.st-p-8  { padding: var(--st-space-8); }
+.st-px-4 { padding-inline: var(--st-space-4); }
+.st-px-6 { padding-inline: var(--st-space-6); }
+.st-py-4 { padding-block: var(--st-space-4); }
+.st-py-6 { padding-block: var(--st-space-6); }
+
+/* Display */
+.st-flex         { display: flex; }
+.st-inline-flex  { display: inline-flex; }
+.st-grid         { display: grid; }
+.st-block        { display: block; }
+.st-inline-block { display: inline-block; }
+.st-hidden       { display: none !important; }
+
+/* Flex helpers */
+.st-flex-col      { flex-direction: column; }
+.st-items-center  { align-items: center; }
+.st-items-start   { align-items: flex-start; }
+.st-justify-end   { justify-content: flex-end; }
+.st-justify-center{ justify-content: center; }
+.st-justify-between{ justify-content: space-between; }
+.st-gap-2  { gap: var(--st-space-2); }
+.st-gap-3  { gap: var(--st-space-3); }
+.st-gap-4  { gap: var(--st-space-4); }
+.st-gap-6  { gap: var(--st-space-6); }
+.st-flex-1 { flex: 1; }
+.st-shrink-0 { flex-shrink: 0; }
+.st-w-full { width: 100%; }
+.st-min-w-0 { min-width: 0; }
+
+/* Borders */
+.st-border        { border: 1px solid var(--st-color-border); }
+.st-border-t      { border-top: 1px solid var(--st-color-border); }
+.st-border-b      { border-bottom: 1px solid var(--st-color-border); }
+.st-rounded       { border-radius: var(--st-radius-md); }
+.st-rounded-lg    { border-radius: var(--st-radius-lg); }
+.st-rounded-xl    { border-radius: var(--st-radius-xl); }
+.st-rounded-full  { border-radius: var(--st-radius-full); }
+
+/* Shadow */
+.st-shadow-sm { box-shadow: var(--st-shadow-sm); }
+.st-shadow-md { box-shadow: var(--st-shadow-md); }
+.st-shadow-lg { box-shadow: var(--st-shadow-lg); }
+
+/* Overflow */
+.st-overflow-hidden { overflow: hidden; }
+.st-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Opacity */
+.st-opacity-50 { opacity: 0.5; }
+.st-opacity-75 { opacity: 0.75; }
+
+/* Cursor */
+.st-cursor-pointer { cursor: pointer; }
+.st-cursor-default { cursor: default; }
+
+/* Position */
+.st-relative { position: relative; }
+.st-absolute { position: absolute; }
+.st-sticky   { position: sticky; }
+
+/* Transition */
+.st-transition { transition: all var(--st-transition-base); }

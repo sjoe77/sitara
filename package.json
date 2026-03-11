@@ -1,0 +1,25 @@
+{
+  "name": "sitara",
+  "version": "1.0.0",
+  "description": "Enterprise CSS component library for Banks, FinTechs, and Insurance companies",
+  "main": "src/sitara.css",
+  "style": "src/sitara.css",
+  "files": [
+    "src/"
+  ],
+  "keywords": [
+    "css",
+    "design-system",
+    "enterprise",
+    "banking",
+    "fintech",
+    "insurance",
+    "components",
+    "accessible"
+  ],
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "showcase": "open showcase/index.html"
+  },
+  "license": "MIT"
+}

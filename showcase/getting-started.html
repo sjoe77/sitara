@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="banking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started — Sitara Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../src/sitara.css">
+  <link rel="stylesheet" href="showcase.css">
+  <style>
+    /* ----------------------------------------------------------------
+       Getting-started–specific styles
+    ---------------------------------------------------------------- */
+
+    /* Code block */
+    .gs-code {
+      background: var(--st-color-bg);
+      border: 1px solid var(--st-color-border);
+      border-radius: var(--st-card-radius);
+      overflow: hidden;
+      margin: var(--st-space-4) 0;
+      font-size: var(--st-text-sm);
+      position: relative;
+    }
+
+    .gs-code__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--st-space-2) var(--st-space-4);
+      background: var(--st-color-bg-subtle);
+      border-bottom: 1px solid var(--st-color-border);
+    }
+
+    .gs-code__lang {
+      font-size: var(--st-text-2xs);
+      font-weight: var(--st-font-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--st-tracking-wider);
+      color: var(--st-color-text-tertiary);
+    }
+
+    .gs-code__copy {
+      background: none;
+      border: 1px solid var(--st-color-border);
+      border-radius: var(--st-radius-md);
+      padding: 2px 10px;
+      font-size: var(--st-text-xs);
+      color: var(--st-color-text-secondary);
+      cursor: pointer;
+      transition: all var(--st-transition-fast);
+    }
+    .gs-code__copy:hover {
+      background: var(--st-color-accent-subtle);
+      color: var(--st-color-accent-text);
+      border-color: var(--st-color-accent-border);
+    }
+
+    .gs-code pre {
+      margin: 0;
+      padding: var(--st-space-4);
+      overflow-x: auto;
+      font-family: var(--st-font-mono);
+      font-size: var(--st-text-sm);
+      line-height: 1.7;
+      color: var(--st-color-text);
+      tab-size: 2;
+    }
+
+    .gs-code .kw  { color: var(--st-color-accent); }
+    .gs-code .attr { color: #e06c75; }
+    .gs-code .val { color: var(--st-color-success-text); }
+    .gs-code .cm  { color: var(--st-color-text-tertiary); font-style: italic; }
+    .gs-code .tag { color: var(--st-color-info-text); }
+    .gs-code .cls { color: #e5c07b; }
+
+    /* Step list */
+    .gs-steps {
+      counter-reset: gs-step;
+      display: flex;
+      flex-direction: column;
+      gap: var(--st-space-6);
+    }
+
+    .gs-step {
+      display: flex;
+      gap: var(--st-space-5);
+    }
+
+    .gs-step__num {
+      counter-increment: gs-step;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--st-color-accent);
+      color: var(--st-color-accent-on);
+      font-size: var(--st-text-sm);
+      font-weight: var(--st-font-bold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .gs-step__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .gs-step__title {
+      font-size: var(--st-text-md);
+      font-weight: var(--st-font-semibold);
+      color: var(--st-color-text);
+      margin: 0 0 var(--st-space-2);
+    }
+
+    .gs-step__desc {
+      font-size: var(--st-text-sm);
+      color: var(--st-color-text-secondary);
+      margin: 0 0 var(--st-space-3);
+      line-height: 1.6;
+    }
+
+    /* Option tabs (install method) */
+    .gs-options {
+      display: flex;
+      gap: var(--st-space-2);
+      margin-bottom: var(--st-space-1);
+      flex-wrap: wrap;
+    }
+
+    .gs-option-btn {
+      padding: var(--st-space-1\.5) var(--st-space-3);
+      border-radius: var(--st-radius-md);
+      border: 1px solid var(--st-color-border);
+      background: var(--st-color-surface);
+      font-size: var(--st-text-xs);
+      font-weight: var(--st-font-medium);
+      color: var(--st-color-text-secondary);
+      cursor: pointer;
+      transition: all var(--st-transition-fast);
+    }
+
+    .gs-option-btn.active,
+    .gs-option-btn:hover {
+      background: var(--st-color-accent-subtle);
+      color: var(--st-color-accent-text);
+      border-color: var(--st-color-accent-border);
+    }
+
+    .gs-option-panel { display: none; }
+    .gs-option-panel.active { display: block; }
+
+    /* Token table */
+    .gs-token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--st-text-sm);
+      margin: var(--st-space-3) 0;
+    }
+
+    .gs-token-table th {
+      text-align: left;
+      padding: var(--st-space-2) var(--st-space-3);
+      background: var(--st-color-bg-subtle);
+      border-bottom: 1px solid var(--st-color-border);
+      font-size: var(--st-text-xs);
+      font-weight: var(--st-font-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--st-tracking-wider);
+      color: var(--st-color-text-tertiary);
+    }
+
+    .gs-token-table td {
+      padding: var(--st-space-2) var(--st-space-3);
+      border-bottom: 1px solid var(--st-color-border-subtle);
+      color: var(--st-color-text-secondary);
+      vertical-align: top;
+    }
+
+    .gs-token-table td:first-child {
+      font-family: var(--st-font-mono);
+      font-size: var(--st-text-xs);
+      color: var(--st-color-accent-text);
+      white-space: nowrap;
+    }
+
+    .gs-token-table tr:last-child td { border-bottom: none; }
+    .gs-token-table tr:hover td { background: var(--st-color-bg-subtle); }
+
+    /* Callout */
+    .gs-callout {
+      display: flex;
+      gap: var(--st-space-3);
+      padding: var(--st-space-4);
+      border-radius: var(--st-card-radius);
+      border: 1px solid;
+      margin: var(--st-space-4) 0;
+    }
+
+    .gs-callout--info {
+      background: var(--st-color-info-subtle);
+      border-color: var(--st-color-info-border);
+      color: var(--st-color-info-text);
+    }
+
+    .gs-callout--tip {
+      background: var(--st-color-success-subtle);
+      border-color: var(--st-color-success-border);
+      color: var(--st-color-success-text);
+    }
+
+    .gs-callout__icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .gs-callout p {
+      margin: 0;
+      font-size: var(--st-text-sm);
+      line-height: 1.6;
+    }
+
+    /* Theme preview strip */
+    .gs-theme-strip {
+      display: flex;
+      gap: 0;
+      border-radius: var(--st-card-radius);
+      overflow: hidden;
+      border: 1px solid var(--st-color-border);
+      height: 8px;
+      margin: var(--st-space-2) 0 var(--st-space-4);
+    }
+
+    .gs-theme-strip__swatch { flex: 1; }
+
+    /* Component quick-ref grid */
+    .gs-component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--st-space-3);
+      margin: var(--st-space-4) 0;
+    }
+
+    .gs-component-card {
+      border: 1px solid var(--st-color-border);
+      border-radius: var(--st-card-radius);
+      padding: var(--st-space-4);
+      background: var(--st-color-surface);
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--st-transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: var(--st-space-2);
+    }
+
+    .gs-component-card:hover {
+      border-color: var(--st-color-accent-border);
+      box-shadow: var(--st-shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .gs-component-card__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--st-radius-md);
+      background: var(--st-color-accent-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--st-color-accent);
+    }
+
+    .gs-component-card__name {
+      font-size: var(--st-text-sm);
+      font-weight: var(--st-font-semibold);
+      color: var(--st-color-text);
+    }
+
+    .gs-component-card__count {
+      font-size: var(--st-text-xs);
+      color: var(--st-color-text-tertiary);
+    }
+
+    /* Toast (copy feedback) */
+    #gs-toast {
+      position: fixed;
+      bottom: var(--st-space-6);
+      right: var(--st-space-6);
+      background: var(--st-color-text);
+      color: var(--st-color-bg);
+      padding: var(--st-space-2) var(--st-space-4);
+      border-radius: var(--st-radius-lg);
+      font-size: var(--st-text-sm);
+      font-weight: var(--st-font-medium);
+      box-shadow: var(--st-shadow-lg);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    #gs-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<input type="checkbox" id="st-sidebar-toggle">
+<div id="gs-toast">Copied!</div>
+
+<div class="st-app">
+
+  <!-- ===== BANNER ===== -->
+  <header class="st-banner" role="banner">
+    <label for="st-sidebar-toggle" class="st-banner__hamburger" aria-label="Toggle sidebar">
+      <span class="st-banner__hamburger-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </label>
+
+    <a href="index.html" class="st-banner__logo">
+      <span class="st-banner__logo-mark">Si</span>
+      <span class="st-banner__logo-name">Sitara</span>
+    </a>
+
+    <div class="st-banner__spacer"></div>
+
+    <div class="st-banner__actions">
+      <div class="st-dropdown">
+        <button class="st-banner__action-btn st-dropdown__trigger" title="Switch theme" aria-label="Switch theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <div class="st-dropdown__menu st-dropdown__menu--right" style="min-width:180px;">
+          <div class="st-dropdown__header">Theme</div>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('banking')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#1A3A6B;display:inline-block;flex-shrink:0;"></span>Banking
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('fintech')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#7C3AED;display:inline-block;flex-shrink:0;"></span>FinTech
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('insurance')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#065F46;display:inline-block;flex-shrink:0;"></span>Insurance
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#4F46E5;display:inline-block;flex-shrink:0;"></span>Default
+          </a>
+        </div>
+      </div>
+
+      <div class="st-banner__divider"></div>
+
+      <div class="st-dropdown">
+        <a href="#" class="st-banner__avatar st-dropdown__trigger" aria-label="User menu">RK</a>
+        <div class="st-dropdown__menu" style="min-width:200px;">
+          <div style="padding:var(--st-space-3) var(--st-space-4);border-bottom:1px solid var(--st-color-border);margin-bottom:var(--st-space-1\.5);">
+            <div style="font-weight:600;font-size:var(--st-text-sm);color:var(--st-color-text);">Rajesh Kumar</div>
+            <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);">rajesh@sitara.io</div>
+          </div>
+          <hr class="st-dropdown__divider">
+          <a href="#" class="st-dropdown__item st-dropdown__item--danger">
+            <svg class="st-dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav class="st-sidebar" aria-label="Main navigation">
+    <div class="st-sidebar__nav">
+
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Docs</summary>
+        <a href="getting-started.html" class="st-sidebar__item st-sidebar__item--active">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          <span class="st-sidebar__item-label">Getting Started</span>
+          <span class="st-sidebar__item-tooltip">Getting Started</span>
+        </a>
+        <a href="icons.html" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="st-sidebar__item-label">Icon Library</span>
+          <span class="st-sidebar__item-tooltip">Icons</span>
+        </a>
+      </details>
+
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Foundation</summary>
+        <a href="index.html#tokens" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span class="st-sidebar__item-label">Design Tokens</span>
+          <span class="st-sidebar__item-tooltip">Design Tokens</span>
+        </a>
+        <a href="index.html#themes" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          <span class="st-sidebar__item-label">Themes</span>
+          <span class="st-sidebar__item-tooltip">Themes</span>
+        </a>
+      </details>
+
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Components</summary>
+        <a href="index.html#buttons" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="3"/></svg>
+          <span class="st-sidebar__item-label">Buttons</span>
+          <span class="st-sidebar__item-tooltip">Buttons</span>
+        </a>
+        <a href="index.html#forms" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h5"/></svg>
+          <span class="st-sidebar__item-label">Forms</span>
+          <span class="st-sidebar__item-tooltip">Forms</span>
+        </a>
+        <a href="index.html#cards" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <span class="st-sidebar__item-label">Cards &amp; more</span>
+          <span class="st-sidebar__item-tooltip">Components</span>
+        </a>
+      </details>
+
+    </div>
+
+    <div class="st-sidebar__footer">
+      <a href="#" class="st-sidebar__user">
+        <div class="st-sidebar__user-avatar">RK</div>
+        <div class="st-sidebar__user-info">
+          <div class="st-sidebar__user-name">Rajesh Kumar</div>
+          <div class="st-sidebar__user-role">Administrator</div>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="st-app__main" id="main-content">
+    <div class="st-content">
+
+      <!-- Page Header -->
+      <div class="st-page-header">
+        <div>
+          <nav class="st-page-header__breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Sitara</a>
+            <span class="st-page-header__breadcrumb-sep" aria-hidden="true">/</span>
+            <span>Getting Started</span>
+          </nav>
+          <h1 class="st-page-header__title">Getting Started</h1>
+          <p class="st-page-header__subtitle">Install Sitara and build your first enterprise application in minutes.</p>
+        </div>
+        <div class="st-page-header__actions">
+          <a href="index.html" class="st-btn st-btn--secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Component Showcase
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION: INSTALLATION
+      ============================================================ -->
+      <section id="install" class="sc-section">
+        <h2 class="sc-section-title">Installation</h2>
+        <p class="sc-section-desc">Three ways to add Sitara to your project. All options give you the full library — choose what fits your workflow.</p>
+
+        <div class="gs-options" id="install-tabs">
+          <button class="gs-option-btn active" onclick="switchTab('install','cdn')">CDN</button>
+          <button class="gs-option-btn" onclick="switchTab('install','npm')">npm</button>
+          <button class="gs-option-btn" onclick="switchTab('install','download')">Download</button>
+        </div>
+
+        <div id="install-cdn" class="gs-option-panel active">
+          <div class="gs-code">
+            <div class="gs-code__header">
+              <span class="gs-code__lang">html</span>
+              <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+            </div>
+<pre><span class="cm">&lt;!-- Place inside &lt;head&gt; --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"https://cdn.jsdelivr.net/npm/sitara-ds/src/sitara.css"</span><span class="tag">&gt;</span></pre>
+          </div>
+          <div class="gs-callout gs-callout--info">
+            <svg class="gs-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <p>The CDN build is a single pre-concatenated CSS file (~28 KB gzipped). No build step required.</p>
+          </div>
+        </div>
+
+        <div id="install-npm" class="gs-option-panel">
+          <div class="gs-code">
+            <div class="gs-code__header">
+              <span class="gs-code__lang">bash</span>
+              <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+            </div>
+<pre>npm install sitara-ds</pre>
+          </div>
+
+          <p style="font-size:var(--st-text-sm);color:var(--st-color-text-secondary);margin:0 0 var(--st-space-2)">Then reference the CSS in your project:</p>
+
+          <div class="gs-code">
+            <div class="gs-code__header">
+              <span class="gs-code__lang">html</span>
+              <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+            </div>
+<pre><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"node_modules/sitara-ds/src/sitara.css"</span><span class="tag">&gt;</span></pre>
+          </div>
+
+          <p style="font-size:var(--st-text-sm);color:var(--st-color-text-secondary);margin:0 0 var(--st-space-2)">Or import in a bundler (Vite, webpack, Parcel):</p>
+
+          <div class="gs-code">
+            <div class="gs-code__header">
+              <span class="gs-code__lang">js</span>
+              <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+            </div>
+<pre><span class="kw">import</span> <span class="val">'sitara-ds/src/sitara.css'</span>;</pre>
+          </div>
+        </div>
+
+        <div id="install-download" class="gs-option-panel">
+          <p style="font-size:var(--st-text-sm);color:var(--st-color-text-secondary);margin:0 0 var(--st-space-3)">Download the repository, copy the <code>src/</code> folder into your project, then link the main CSS file:</p>
+          <div class="gs-code">
+            <div class="gs-code__header">
+              <span class="gs-code__lang">html</span>
+              <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+            </div>
+<pre><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"src/sitara.css"</span><span class="tag">&gt;</span></pre>
+          </div>
+          <div class="gs-callout gs-callout--tip">
+            <svg class="gs-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <p>Copying the source files lets you override tokens directly in <code>src/tokens.css</code> without writing additional CSS.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: FIRST PAGE
+      ============================================================ -->
+      <section id="first-page" class="sc-section">
+        <h2 class="sc-section-title">Your First Page</h2>
+        <p class="sc-section-desc">Minimal boilerplate for a themed page with the full app shell.</p>
+
+        <div class="gs-steps">
+
+          <div class="gs-step">
+            <div class="gs-step__num">1</div>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Add the theme attribute</h3>
+              <p class="gs-step__desc">Set <code>data-theme</code> on <code>&lt;html&gt;</code>. All design tokens update automatically. Omit the attribute for the default indigo theme.</p>
+              <div class="gs-code">
+                <div class="gs-code__header">
+                  <span class="gs-code__lang">html</span>
+                  <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+                </div>
+<pre><span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"en"</span> <span class="attr">data-theme</span>=<span class="val">"banking"</span><span class="tag">&gt;</span>  <span class="cm">&lt;!-- banking | fintech | insurance --&gt;</span></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-step">
+            <div class="gs-step__num">2</div>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Set up the app shell</h3>
+              <p class="gs-step__desc">The app shell wires together the banner, collapsible sidebar, and main content area. The toggle is pure CSS — no JavaScript.</p>
+              <div class="gs-code">
+                <div class="gs-code__header">
+                  <span class="gs-code__lang">html</span>
+                  <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+                </div>
+<pre><span class="cm">&lt;!-- Hidden checkbox drives the CSS-only sidebar toggle --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"checkbox"</span> <span class="attr">id</span>=<span class="val">"st-sidebar-toggle"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-app"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;header</span> <span class="attr">class</span>=<span class="val">"st-banner"</span> <span class="attr">role</span>=<span class="val">"banner"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="val">"st-sidebar-toggle"</span> <span class="attr">class</span>=<span class="val">"st-banner__hamburger"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"st-banner__hamburger-icon"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;</span>
+      <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"/"</span> <span class="attr">class</span>=<span class="val">"st-banner__logo"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"st-banner__logo-mark"</span><span class="tag">&gt;</span>AB<span class="tag">&lt;/span&gt;</span>
+      <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"st-banner__logo-name"</span><span class="tag">&gt;</span>Acme Bank<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-banner__spacer"</span><span class="tag">&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-banner__actions"</span><span class="tag">&gt;</span>
+      <span class="cm">&lt;!-- settings, notifications, user avatar --&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/header&gt;</span>
+
+  <span class="tag">&lt;nav</span> <span class="attr">class</span>=<span class="val">"st-sidebar"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-sidebar__nav"</span><span class="tag">&gt;</span>
+      <span class="cm">&lt;!-- navigation items --&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/nav&gt;</span>
+
+  <span class="tag">&lt;main</span> <span class="attr">class</span>=<span class="val">"st-app__main"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-content"</span><span class="tag">&gt;</span>
+      <span class="cm">&lt;!-- page content --&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/main&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-step">
+            <div class="gs-step__num">3</div>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Add sidebar navigation</h3>
+              <p class="gs-step__desc">Sidebar groups use native <code>&lt;details&gt;</code> for CSS-only collapsing. Each item has a label and optional tooltip for the collapsed icon-only state.</p>
+              <div class="gs-code">
+                <div class="gs-code__header">
+                  <span class="gs-code__lang">html</span>
+                  <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+                </div>
+<pre><span class="tag">&lt;details</span> <span class="attr">class</span>=<span class="val">"st-sidebar__group"</span> <span class="attr">open</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;summary</span> <span class="attr">class</span>=<span class="val">"st-sidebar__section-label"</span><span class="tag">&gt;</span>Accounts<span class="tag">&lt;/summary&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"/dashboard"</span> <span class="attr">class</span>=<span class="val">"st-sidebar__item st-sidebar__item--active"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;svg</span> <span class="attr">class</span>=<span class="val">"st-sidebar__item-icon"</span> <span class="attr">viewBox</span>=<span class="val">"0 0 24 24"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/svg&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"st-sidebar__item-label"</span><span class="tag">&gt;</span>Dashboard<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"st-sidebar__item-tooltip"</span><span class="tag">&gt;</span>Dashboard<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/details&gt;</span></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-step">
+            <div class="gs-step__num">4</div>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Build your content area</h3>
+              <p class="gs-step__desc">Inside <code>.st-content</code> use the page header, grid, and component classes freely.</p>
+              <div class="gs-code">
+                <div class="gs-code__header">
+                  <span class="gs-code__lang">html</span>
+                  <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+                </div>
+<pre><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-page-header"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="val">"st-page-header__title"</span><span class="tag">&gt;</span>Accounts<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"st-page-header__subtitle"</span><span class="tag">&gt;</span>Manage all customer accounts.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-page-header__actions"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="val">"st-btn st-btn--primary"</span><span class="tag">&gt;</span>New Account<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- 12-column grid --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-grid st-grid--gap-4"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-col-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-card"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-col-4"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"st-stat"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /gs-steps -->
+      </section>
+
+      <!-- ============================================================
+           SECTION: THEMES
+      ============================================================ -->
+      <section id="themes" class="sc-section">
+        <h2 class="sc-section-title">Themes</h2>
+        <p class="sc-section-desc">Switch the complete colour system with a single attribute. Themes can be nested — apply a different theme to any sub-component.</p>
+
+        <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--st-space-4)">
+          <div class="st-card" data-theme="banking">
+            <div class="st-card__header">
+              <div class="st-card__title">Banking</div>
+              <span class="st-badge st-badge--default" style="font-family:var(--st-font-mono);font-size:10px;">data-theme="banking"</span>
+            </div>
+            <div class="st-card__body">
+              <div class="gs-theme-strip">
+                <div class="gs-theme-strip__swatch" style="background:#1A3A6B"></div>
+                <div class="gs-theme-strip__swatch" style="background:#2A5298"></div>
+                <div class="gs-theme-strip__swatch" style="background:#B8860B"></div>
+                <div class="gs-theme-strip__swatch" style="background:#EAF0FB"></div>
+              </div>
+              <p style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);margin:0">Deep navy + gold. Conservative, trustworthy — ideal for retail and commercial banking portals.</p>
+            </div>
+          </div>
+
+          <div class="st-card" data-theme="fintech">
+            <div class="st-card__header">
+              <div class="st-card__title">FinTech</div>
+              <span class="st-badge st-badge--default" style="font-family:var(--st-font-mono);font-size:10px;">data-theme="fintech"</span>
+            </div>
+            <div class="st-card__body">
+              <div class="gs-theme-strip">
+                <div class="gs-theme-strip__swatch" style="background:#7C3AED"></div>
+                <div class="gs-theme-strip__swatch" style="background:#06B6D4"></div>
+                <div class="gs-theme-strip__swatch" style="background:#4F46E5"></div>
+                <div class="gs-theme-strip__swatch" style="background:#F5F3FF"></div>
+              </div>
+              <p style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);margin:0">Violet + cyan. Modern, bold — designed for digital wallets, trading platforms, and neobanks.</p>
+            </div>
+          </div>
+
+          <div class="st-card" data-theme="insurance">
+            <div class="st-card__header">
+              <div class="st-card__title">Insurance</div>
+              <span class="st-badge st-badge--default" style="font-family:var(--st-font-mono);font-size:10px;">data-theme="insurance"</span>
+            </div>
+            <div class="st-card__body">
+              <div class="gs-theme-strip">
+                <div class="gs-theme-strip__swatch" style="background:#065F46"></div>
+                <div class="gs-theme-strip__swatch" style="background:#047857"></div>
+                <div class="gs-theme-strip__swatch" style="background:#D97706"></div>
+                <div class="gs-theme-strip__swatch" style="background:#ECFDF5"></div>
+              </div>
+              <p style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);margin:0">Forest teal + amber. Stable, warm — suited for insurance portals, claims management, and agent dashboards.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-size:var(--st-text-sm);font-weight:var(--st-font-semibold);margin:var(--st-space-6) 0 var(--st-space-3)">Custom theme</h3>
+        <p style="font-size:var(--st-text-sm);color:var(--st-color-text-secondary);margin:0 0 var(--st-space-3)">Override tokens at <code>:root</code> (or inside a <code>[data-theme="custom"]</code> block) to create your own palette:</p>
+
+        <div class="gs-code">
+          <div class="gs-code__header">
+            <span class="gs-code__lang">css</span>
+            <button class="gs-code__copy" onclick="copyCode(this)">Copy</button>
+          </div>
+<pre><span class="cm">/* my-theme.css */</span>
+<span class="tag">[data-theme="my-bank"]</span> {
+  <span class="attr">--st-color-accent</span>:         <span class="val">#00529B</span>;
+  <span class="attr">--st-color-accent-subtle</span>:  <span class="val">#E6EFF7</span>;
+  <span class="attr">--st-color-accent-text</span>:    <span class="val">#003D73</span>;
+  <span class="attr">--st-color-accent-on</span>:      <span class="val">#FFFFFF</span>;
+  <span class="attr">--st-color-accent-border</span>:  <span class="val">#99C0DF</span>;
+  <span class="attr">--st-font-sans</span>:            <span class="val">'Barlow', sans-serif</span>;
+}</pre>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: DESIGN TOKENS
+      ============================================================ -->
+      <section id="tokens" class="sc-section">
+        <h2 class="sc-section-title">Key Design Tokens</h2>
+        <p class="sc-section-desc">All values in Sitara are CSS custom properties. Override any at <code>:root</code> level for project-wide customisation.</p>
+
+        <div style="border:1px solid var(--st-color-border);border-radius:var(--st-card-radius);overflow:hidden;">
+          <table class="gs-token-table">
+            <thead>
+              <tr><th>Token</th><th>Default value</th><th>Use</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>--st-color-accent</td><td>#4F46E5</td><td>Primary brand / action colour</td></tr>
+              <tr><td>--st-color-bg</td><td>#F8F9FA</td><td>Page background</td></tr>
+              <tr><td>--st-color-surface</td><td>#FFFFFF</td><td>Card / panel surface</td></tr>
+              <tr><td>--st-color-text</td><td>#111827</td><td>Primary text</td></tr>
+              <tr><td>--st-color-text-secondary</td><td>#6B7280</td><td>Secondary / helper text</td></tr>
+              <tr><td>--st-color-border</td><td>#E5E7EB</td><td>Component borders</td></tr>
+              <tr><td>--st-color-success</td><td>#059669</td><td>Positive state</td></tr>
+              <tr><td>--st-color-warning</td><td>#D97706</td><td>Caution state</td></tr>
+              <tr><td>--st-color-danger</td><td>#DC2626</td><td>Error / destructive state</td></tr>
+              <tr><td>--st-color-info</td><td>#2563EB</td><td>Informational state</td></tr>
+              <tr><td>--st-space-1</td><td>0.25 rem (4 px)</td><td>Base spacing unit</td></tr>
+              <tr><td>--st-font-sans</td><td>Inter, system-ui</td><td>Body typeface</td></tr>
+              <tr><td>--st-font-mono</td><td>JetBrains Mono, monospace</td><td>Code / numeric data</td></tr>
+              <tr><td>--st-card-radius</td><td>10px</td><td>Card corner radius</td></tr>
+              <tr><td>--st-banner-height</td><td>52px</td><td>Top banner height</td></tr>
+              <tr><td>--st-sidebar-width</td><td>220px</td><td>Expanded sidebar width</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: COMPONENT OVERVIEW
+      ============================================================ -->
+      <section id="components" class="sc-section">
+        <h2 class="sc-section-title">Component Overview</h2>
+        <p class="sc-section-desc">Click any card to jump to the live examples in the Component Showcase.</p>
+
+        <div class="gs-component-grid">
+          <a href="index.html#buttons" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="3"/></svg>
+            </div>
+            <div class="gs-component-card__name">Buttons</div>
+            <div class="gs-component-card__count">7 variants · 3 sizes · loading · group</div>
+          </a>
+          <a href="index.html#forms" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h5"/></svg>
+            </div>
+            <div class="gs-component-card__name">Forms</div>
+            <div class="gs-component-card__count">Input · Textarea · Select · Checkbox · Radio · Toggle</div>
+          </a>
+          <a href="index.html#cards" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <div class="gs-component-card__name">Cards &amp; Stats</div>
+            <div class="gs-component-card__count">Card · Stat KPI · List</div>
+          </a>
+          <a href="index.html#badges" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="gs-component-card__name">Badges &amp; Alerts</div>
+            <div class="gs-component-card__count">9 badge variants · 4 alert severities</div>
+          </a>
+          <a href="index.html#tabs" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v4H3zM14 3h7v4h-7zM3 11h18v10H3z"/></svg>
+            </div>
+            <div class="gs-component-card__name">Tabs</div>
+            <div class="gs-component-card__count">Underline · Pills · CSS-only switching</div>
+          </a>
+          <a href="index.html#accordion" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </div>
+            <div class="gs-component-card__name">Accordion</div>
+            <div class="gs-component-card__count">Native &lt;details&gt; · zero JS</div>
+          </a>
+          <a href="index.html#table" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+            </div>
+            <div class="gs-component-card__name">Table</div>
+            <div class="gs-component-card__count">Sort indicators · Pagination · Responsive</div>
+          </a>
+          <a href="index.html#workflow" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5l4-5M12 12l4 5"/></svg>
+            </div>
+            <div class="gs-component-card__name">Workflow Tracker</div>
+            <div class="gs-component-card__count">Drill-down · Parallel branches · Error states</div>
+          </a>
+          <a href="index.html#layout" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <div class="gs-component-card__name">Grid &amp; Layout</div>
+            <div class="gs-component-card__count">12-column responsive grid</div>
+          </a>
+          <a href="icons.html" class="gs-component-card">
+            <div class="gs-component-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="gs-component-card__name">Icon Library</div>
+            <div class="gs-component-card__count">70+ Lucide-compatible icons · searchable</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer style="margin-top:var(--st-space-16);padding-top:var(--st-space-8);border-top:1px solid var(--st-color-border);text-align:center;color:var(--st-color-text-tertiary);font-size:var(--st-text-sm)">
+        Sitara Design System v1.0 &mdash; Built for enterprise. Banks. FinTechs. Insurance.
+      </footer>
+
+    </div><!-- /st-content -->
+  </main>
+</div><!-- /st-app -->
+
+<script>
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
+  function switchTab(group, id) {
+    document.querySelectorAll('#' + group + '-tabs .gs-option-btn').forEach((b, i) => {
+      b.classList.toggle('active', b.textContent.toLowerCase().replace(/\s/g,'') === id.replace(/\s/g,'') || (id === 'cdn' && i === 0) || (id === 'npm' && i === 1) || (id === 'download' && i === 2));
+    });
+    ['cdn','npm','download'].forEach(p => {
+      const el = document.getElementById(group + '-' + p);
+      if (el) el.classList.toggle('active', p === id);
+    });
+  }
+
+  function copyCode(btn) {
+    const pre = btn.closest('.gs-code').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = orig; }, 1500);
+    });
+  }
+</script>
+</body>
+</html>

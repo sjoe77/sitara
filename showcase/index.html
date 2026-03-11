@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="banking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitara Design System — Component Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../src/sitara.css">
+  <link rel="stylesheet" href="showcase.css">
+</head>
+<body>
+
+<!-- Sidebar toggle (CSS-only) -->
+<input type="checkbox" id="st-sidebar-toggle">
+
+<div class="st-app">
+
+  <!-- ===== BANNER ===== -->
+  <header class="st-banner" role="banner">
+    <label for="st-sidebar-toggle" class="st-banner__hamburger" aria-label="Toggle sidebar">
+      <span class="st-banner__hamburger-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </label>
+
+    <a href="#" class="st-banner__logo">
+      <span class="st-banner__logo-mark">Si</span>
+      <span class="st-banner__logo-name">Sitara</span>
+    </a>
+
+    <div class="st-banner__search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search components…" aria-label="Search components">
+      <span class="st-banner__search-kbd">⌘K</span>
+    </div>
+
+    <div class="st-banner__spacer"></div>
+
+    <div class="st-banner__actions">
+      <!-- Theme switcher -->
+      <div class="st-dropdown">
+        <button class="st-banner__action-btn st-dropdown__trigger" title="Switch theme" aria-label="Switch theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <div class="st-dropdown__menu st-dropdown__menu--right" style="min-width:180px;">
+          <div class="st-dropdown__header">Theme</div>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('banking')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#1A3A6B;display:inline-block;flex-shrink:0;"></span>
+            Banking
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('fintech')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#7C3AED;display:inline-block;flex-shrink:0;"></span>
+            FinTech
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('insurance')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#065F46;display:inline-block;flex-shrink:0;"></span>
+            Insurance
+          </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#4F46E5;display:inline-block;flex-shrink:0;"></span>
+            Default
+          </a>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <button class="st-banner__action-btn" aria-label="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="st-dot"></span>
+      </button>
+
+      <!-- Settings -->
+      <button class="st-banner__action-btn" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+
+      <div class="st-banner__divider"></div>
+
+      <!-- User avatar with dropdown -->
+      <div class="st-dropdown">
+        <a href="#" class="st-banner__avatar st-dropdown__trigger" aria-label="User menu">RK</a>
+        <div class="st-dropdown__menu" style="min-width:200px;">
+          <div style="padding:var(--st-space-3) var(--st-space-4);border-bottom:1px solid var(--st-color-border);margin-bottom:var(--st-space-1\.5);">
+            <div style="font-weight:600;font-size:var(--st-text-sm);color:var(--st-color-text);">Rajesh Kumar</div>
+            <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);">rajesh@sitara.io</div>
+          </div>
+          <a href="#" class="st-dropdown__item">
+            <svg class="st-dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <a href="#" class="st-dropdown__item">
+            <svg class="st-dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Account Settings
+          </a>
+          <hr class="st-dropdown__divider">
+          <a href="#" class="st-dropdown__item st-dropdown__item--danger">
+            <svg class="st-dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav class="st-sidebar" aria-label="Main navigation">
+    <div class="st-sidebar__nav">
+
+      <!-- Docs -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Docs</summary>
+        <a href="getting-started.html" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          <span class="st-sidebar__item-label">Getting Started</span>
+          <span class="st-sidebar__item-tooltip">Getting Started</span>
+        </a>
+        <a href="icons.html" class="st-sidebar__item">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="st-sidebar__item-label">Icon Library</span>
+          <span class="st-sidebar__item-tooltip">Icons</span>
+        </a>
+      </details>
+
+      <!-- Foundation -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Foundation</summary>
+        <a href="#tokens" class="st-sidebar__item st-sidebar__item--active" onclick="scrollTo(event,'tokens')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span class="st-sidebar__item-label">Design Tokens</span>
+          <span class="st-sidebar__item-tooltip">Design Tokens</span>
+        </a>
+        <a href="#themes" class="st-sidebar__item" onclick="scrollTo(event,'themes')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          <span class="st-sidebar__item-label">Themes</span>
+          <span class="st-sidebar__item-tooltip">Themes</span>
+        </a>
+      </details>
+
+      <!-- Inputs -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Inputs</summary>
+        <a href="#buttons" class="st-sidebar__item" onclick="scrollTo(event,'buttons')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="3"/></svg>
+          <span class="st-sidebar__item-label">Buttons</span>
+          <span class="st-sidebar__item-tooltip">Buttons</span>
+        </a>
+        <a href="#forms" class="st-sidebar__item" onclick="scrollTo(event,'forms')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h5"/></svg>
+          <span class="st-sidebar__item-label">Forms</span>
+          <span class="st-sidebar__item-tooltip">Forms</span>
+        </a>
+      </details>
+
+      <!-- Feedback -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Feedback</summary>
+        <a href="#badges" class="st-sidebar__item" onclick="scrollTo(event,'badges')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="st-sidebar__item-label">Badges &amp; Alerts</span>
+          <span class="st-sidebar__item-tooltip">Badges</span>
+        </a>
+        <a href="#avatars" class="st-sidebar__item" onclick="scrollTo(event,'avatars')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="st-sidebar__item-label">Avatar</span>
+          <span class="st-sidebar__item-tooltip">Avatar</span>
+        </a>
+        <a href="#progress" class="st-sidebar__item" onclick="scrollTo(event,'progress')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="8 8 3 12 8 16"/></svg>
+          <span class="st-sidebar__item-label">Progress &amp; Steps</span>
+          <span class="st-sidebar__item-tooltip">Progress</span>
+        </a>
+      </details>
+
+      <!-- Container -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Container</summary>
+        <a href="#cards" class="st-sidebar__item" onclick="scrollTo(event,'cards')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <span class="st-sidebar__item-label">Cards</span>
+          <span class="st-sidebar__item-tooltip">Cards</span>
+        </a>
+        <a href="#tabs" class="st-sidebar__item" onclick="scrollTo(event,'tabs')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v4H3zM14 3h7v4h-7zM3 11h18v10H3z"/></svg>
+          <span class="st-sidebar__item-label">Tabs</span>
+          <span class="st-sidebar__item-tooltip">Tabs</span>
+        </a>
+        <a href="#accordion" class="st-sidebar__item" onclick="scrollTo(event,'accordion')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <span class="st-sidebar__item-label">Accordion</span>
+          <span class="st-sidebar__item-tooltip">Accordion</span>
+        </a>
+        <a href="#table" class="st-sidebar__item" onclick="scrollTo(event,'table')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+          <span class="st-sidebar__item-label">Table</span>
+          <span class="st-sidebar__item-tooltip">Table</span>
+        </a>
+        <a href="#workflow" class="st-sidebar__item" onclick="scrollTo(event,'workflow')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5l4-5M12 12l4 5"/></svg>
+          <span class="st-sidebar__item-label">Workflow</span>
+          <span class="st-sidebar__item-tooltip">Workflow Tracker</span>
+        </a>
+      </details>
+
+      <!-- Layout -->
+      <details class="st-sidebar__group" open>
+        <summary class="st-sidebar__section-label">Layout</summary>
+        <a href="#layout" class="st-sidebar__item" onclick="scrollTo(event,'layout')">
+          <svg class="st-sidebar__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <span class="st-sidebar__item-label">Grid &amp; Layout</span>
+          <span class="st-sidebar__item-tooltip">Grid &amp; Layout</span>
+        </a>
+      </details>
+
+    </div>
+
+    <div class="st-sidebar__footer">
+      <a href="#" class="st-sidebar__user">
+        <div class="st-sidebar__user-avatar">RK</div>
+        <div class="st-sidebar__user-info">
+          <div class="st-sidebar__user-name">Rajesh Kumar</div>
+          <div class="st-sidebar__user-role">Administrator</div>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="st-app__main" id="main-content">
+    <div class="st-content">
+
+      <!-- Page Header -->
+      <div class="st-page-header">
+        <div>
+          <nav class="st-page-header__breadcrumb" aria-label="Breadcrumb">
+            <a href="#">Sitara</a>
+            <span class="st-page-header__breadcrumb-sep" aria-hidden="true">/</span>
+            <span>Component Showcase</span>
+          </nav>
+          <h1 class="st-page-header__title">Component Showcase</h1>
+          <p class="st-page-header__subtitle">Enterprise-grade CSS components for Banks, FinTechs &amp; Insurance. Switch themes above.</p>
+        </div>
+        <div class="st-page-header__actions">
+          <button class="st-btn st-btn--secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </button>
+          <button class="st-btn st-btn--primary">Get Started</button>
+        </div>
+      </div>
+
+      <!-- ======================================================
+           SECTION: DESIGN TOKENS
+           ====================================================== -->
+      <section id="tokens" class="sc-section">
+        <h2 class="sc-section-title">Design Tokens</h2>
+        <p class="sc-section-desc">Semantic CSS custom properties power every component. Swap a theme and all values update automatically.</p>
+
+        <div class="st-grid st-grid--gap-4" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))">
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-accent)"></div>
+            <div class="sc-swatch__label">Accent</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-accent-subtle)"></div>
+            <div class="sc-swatch__label">Accent Subtle</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-bg)"></div>
+            <div class="sc-swatch__label">Background</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-surface);border:1px solid var(--st-color-border)"></div>
+            <div class="sc-swatch__label">Surface</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-success)"></div>
+            <div class="sc-swatch__label">Success</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-warning)"></div>
+            <div class="sc-swatch__label">Warning</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-danger)"></div>
+            <div class="sc-swatch__label">Danger</div>
+          </div>
+          <div class="sc-swatch">
+            <div class="sc-swatch__color" style="background:var(--st-color-info)"></div>
+            <div class="sc-swatch__label">Info</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: THEMES
+           ====================================================== -->
+      <section id="themes" class="sc-section">
+        <h2 class="sc-section-title">Themes</h2>
+        <p class="sc-section-desc">Apply <code>data-theme</code> to any ancestor element to switch the colour system.</p>
+
+        <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--st-space-4)">
+          <div class="sc-theme-card" data-theme="banking">
+            <div class="sc-theme-card__bar"></div>
+            <div class="sc-theme-card__body">
+              <strong>Banking</strong>
+              <span class="st-badge st-badge--default">data-theme="banking"</span>
+              <p>Deep navy + gold. Conservative and trustworthy.</p>
+              <button class="st-btn st-btn--primary st-btn--sm" onclick="setTheme('banking')">Apply</button>
+            </div>
+          </div>
+          <div class="sc-theme-card" data-theme="fintech">
+            <div class="sc-theme-card__bar"></div>
+            <div class="sc-theme-card__body">
+              <strong>FinTech</strong>
+              <span class="st-badge st-badge--default">data-theme="fintech"</span>
+              <p>Violet + cyan. Modern and bold.</p>
+              <button class="st-btn st-btn--primary st-btn--sm" onclick="setTheme('fintech')">Apply</button>
+            </div>
+          </div>
+          <div class="sc-theme-card" data-theme="insurance">
+            <div class="sc-theme-card__bar"></div>
+            <div class="sc-theme-card__body">
+              <strong>Insurance</strong>
+              <span class="st-badge st-badge--default">data-theme="insurance"</span>
+              <p>Forest teal + amber. Stable and warm.</p>
+              <button class="st-btn st-btn--primary st-btn--sm" onclick="setTheme('insurance')">Apply</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: BUTTONS
+           ====================================================== -->
+      <section id="buttons" class="sc-section">
+        <h2 class="sc-section-title">Buttons</h2>
+        <p class="sc-section-desc">Seven variants, three sizes, icon-only, full-width, loading, and grouped.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-btn</td><td>Base button — required on every button</td></tr>
+              <tr><td>st-btn--primary</td><td>Primary CTA; uses accent colour</td></tr>
+              <tr><td>st-btn--secondary</td><td>Secondary / neutral action</td></tr>
+              <tr><td>st-btn--outline</td><td>Outlined, transparent background</td></tr>
+              <tr><td>st-btn--ghost</td><td>No background or border</td></tr>
+              <tr><td>st-btn--ghost-accent</td><td>Ghost with accent foreground colour</td></tr>
+              <tr><td>st-btn--danger</td><td>Destructive action (red)</td></tr>
+              <tr><td>st-btn--success</td><td>Positive / confirm action (green)</td></tr>
+              <tr><td>st-btn--sm</td><td>Small size</td></tr>
+              <tr><td>st-btn--lg</td><td>Large size</td></tr>
+              <tr><td>st-btn--icon</td><td>Square icon-only button</td></tr>
+              <tr><td>st-btn--pill</td><td>Fully rounded pill shape</td></tr>
+              <tr><td>st-btn--loading</td><td>Adds spinning indicator; keeps element width stable</td></tr>
+              <tr><td>st-btn-group</td><td>Wrapper that joins sibling buttons into a segmented control</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Variants</div>
+          <div class="sc-demo__body" style="display:flex;flex-wrap:wrap;gap:var(--st-space-3);align-items:center">
+            <button class="st-btn st-btn--primary">Primary</button>
+            <button class="st-btn st-btn--secondary">Secondary</button>
+            <button class="st-btn st-btn--outline">Outline</button>
+            <button class="st-btn st-btn--ghost">Ghost</button>
+            <button class="st-btn st-btn--ghost-accent">Ghost Accent</button>
+            <button class="st-btn st-btn--danger">Danger</button>
+            <button class="st-btn st-btn--success">Success</button>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Sizes</div>
+          <div class="sc-demo__body" style="display:flex;flex-wrap:wrap;gap:var(--st-space-3);align-items:center">
+            <button class="st-btn st-btn--primary st-btn--sm">Small</button>
+            <button class="st-btn st-btn--primary">Medium</button>
+            <button class="st-btn st-btn--primary st-btn--lg">Large</button>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">With Icons</div>
+          <div class="sc-demo__body" style="display:flex;flex-wrap:wrap;gap:var(--st-space-3);align-items:center">
+            <button class="st-btn st-btn--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              Download
+            </button>
+            <button class="st-btn st-btn--secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+              Edit
+            </button>
+            <button class="st-btn st-btn--danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+              Delete
+            </button>
+            <button class="st-btn st-btn--ghost st-btn--icon" aria-label="More options">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">States</div>
+          <div class="sc-demo__body" style="display:flex;flex-wrap:wrap;gap:var(--st-space-3);align-items:center">
+            <button class="st-btn st-btn--primary st-btn--loading">Saving…</button>
+            <button class="st-btn st-btn--primary" disabled>Disabled</button>
+            <button class="st-btn st-btn--primary st-btn--pill">Pill Shape</button>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Group</div>
+          <div class="sc-demo__body">
+            <div class="st-btn-group">
+              <button class="st-btn st-btn--secondary">Day</button>
+              <button class="st-btn st-btn--secondary">Week</button>
+              <button class="st-btn st-btn--secondary" style="background:var(--st-color-accent-subtle);color:var(--st-color-accent-text)">Month</button>
+              <button class="st-btn st-btn--secondary">Year</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: FORMS
+           ====================================================== -->
+      <section id="forms" class="sc-section">
+        <h2 class="sc-section-title">Form Components</h2>
+        <p class="sc-section-desc">Fully accessible form controls with validation states. All support keyboard navigation.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-field</td><td>Wrapper for label + control + helper text</td></tr>
+              <tr><td>st-label</td><td>Form label (<code>&lt;label&gt;</code>)</td></tr>
+              <tr><td>st-label-hint</td><td>Optional / secondary text inside a label</td></tr>
+              <tr><td>st-input</td><td>Text, number, email, password, date inputs</td></tr>
+              <tr><td>st-input--error</td><td>Red error border; pair with <code>aria-invalid="true"</code></td></tr>
+              <tr><td>st-input--success</td><td>Green success border</td></tr>
+              <tr><td>st-textarea</td><td>Multi-line textarea</td></tr>
+              <tr><td>st-select</td><td>Styled native select</td></tr>
+              <tr><td>st-input-group</td><td>Wrapper for input with addons</td></tr>
+              <tr><td>st-input-group--prefix</td><td>Adds left-side icon space</td></tr>
+              <tr><td>st-input-addon</td><td>Text addon prepended or appended to an input</td></tr>
+              <tr><td>st-input-icon--prefix</td><td>SVG icon placed inside prefix position</td></tr>
+              <tr><td>st-checkbox</td><td>Custom-styled checkbox</td></tr>
+              <tr><td>st-radio</td><td>Custom-styled radio button</td></tr>
+              <tr><td>st-toggle</td><td>Toggle switch (checkbox-based)</td></tr>
+              <tr><td>st-field-error</td><td>Error message below a field</td></tr>
+              <tr><td>st-field-success</td><td>Success message below a field</td></tr>
+              <tr><td>st-field-help</td><td>Neutral helper / hint text</td></tr>
+              <tr><td>st-field-count</td><td>Character counter (right-aligned)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Text Inputs</div>
+          <div class="sc-demo__body">
+            <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--st-space-4);align-items:start">
+              <div class="st-field">
+                <label class="st-label" for="demo-name">Full Name <abbr title="required">*</abbr></label>
+                <input class="st-input" id="demo-name" type="text" placeholder="John Doe">
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-email">Email Address</label>
+                <div class="st-input-group st-input-group--prefix">
+                  <svg class="st-input-icon st-input-icon--prefix" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input class="st-input" id="demo-email" type="email" placeholder="name@company.com">
+                </div>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-error">Account Number</label>
+                <input class="st-input st-input--error" id="demo-error" type="text" value="1234 XXXX" aria-invalid="true" aria-describedby="demo-error-msg">
+                <span class="st-field-error" id="demo-error-msg">Account number must be 16 digits</span>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-success">IFSC Code</label>
+                <input class="st-input st-input--success" id="demo-success" type="text" value="HDFC0001234">
+                <span class="st-field-success">Valid IFSC code found: HDFC Bank, Andheri</span>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-addon">Transaction Amount</label>
+                <div class="st-input-group">
+                  <span class="st-input-addon">INR</span>
+                  <input class="st-input" id="demo-addon" type="number" placeholder="0.00">
+                  <span class="st-input-addon">.00</span>
+                </div>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-disabled">Policy Number</label>
+                <input class="st-input" id="demo-disabled" type="text" value="POL-2024-88721" disabled>
+                <span class="st-field-help">Read-only field</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Textarea</div>
+          <div class="sc-demo__body">
+            <div class="st-field" style="max-width:600px">
+              <label class="st-label" for="demo-textarea">Transaction Notes <span class="st-label-hint">Optional</span></label>
+              <textarea class="st-textarea" id="demo-textarea" rows="4" placeholder="Add any relevant notes about this transaction…"></textarea>
+              <div style="display:flex;justify-content:space-between">
+                <span class="st-field-help">Provide additional context for compliance records</span>
+                <span class="st-field-count">0 / 500</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Select</div>
+          <div class="sc-demo__body">
+            <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--st-space-4);align-items:start">
+              <div class="st-field">
+                <label class="st-label" for="demo-select">Account Type</label>
+                <select class="st-select" id="demo-select">
+                  <option value="">Choose account type…</option>
+                  <option>Savings Account</option>
+                  <option>Current Account</option>
+                  <option>Fixed Deposit</option>
+                  <option>Recurring Deposit</option>
+                </select>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="demo-select-sm">Priority <span class="st-label-hint">Small</span></label>
+                <select class="st-select st-select--sm" id="demo-select-sm">
+                  <option>High</option>
+                  <option>Medium</option>
+                  <option>Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Checkbox</div>
+          <div class="sc-demo__body">
+            <div class="st-checkbox-group">
+              <label class="st-checkbox-wrapper">
+                <input type="checkbox" checked>
+                <span class="st-checkbox-label">
+                  Enable two-factor authentication
+                  <span class="st-checkbox-description">Adds an extra layer of security to your account</span>
+                </span>
+              </label>
+              <label class="st-checkbox-wrapper">
+                <input type="checkbox">
+                <span class="st-checkbox-label">Send SMS alerts for large transactions</span>
+              </label>
+              <label class="st-checkbox-wrapper">
+                <input type="checkbox" disabled>
+                <span class="st-checkbox-label">Accept terms and conditions (disabled)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Radio</div>
+          <div class="sc-demo__body">
+            <div class="st-radio-group st-radio-group--row">
+              <label class="st-radio-wrapper">
+                <input type="radio" name="transfer" checked>
+                <span class="st-radio-label">NEFT</span>
+              </label>
+              <label class="st-radio-wrapper">
+                <input type="radio" name="transfer">
+                <span class="st-radio-label">RTGS</span>
+              </label>
+              <label class="st-radio-wrapper">
+                <input type="radio" name="transfer">
+                <span class="st-radio-label">IMPS</span>
+              </label>
+              <label class="st-radio-wrapper">
+                <input type="radio" name="transfer" disabled>
+                <span class="st-radio-label">UPI (disabled)</span>
+              </label>
+            </div>
+
+            <div class="st-radio-card-group" style="margin-top:var(--st-space-5)">
+              <div class="st-radio-card">
+                <input type="radio" name="plan" id="plan-basic" checked>
+                <label class="st-radio-card-label" for="plan-basic">
+                  <span class="st-radio-card-title">Basic</span>
+                  <span class="st-radio-card-desc">Up to ₹1L per day</span>
+                </label>
+              </div>
+              <div class="st-radio-card">
+                <input type="radio" name="plan" id="plan-pro">
+                <label class="st-radio-card-label" for="plan-pro">
+                  <span class="st-radio-card-title">Professional</span>
+                  <span class="st-radio-card-desc">Up to ₹10L per day</span>
+                </label>
+              </div>
+              <div class="st-radio-card">
+                <input type="radio" name="plan" id="plan-corp">
+                <label class="st-radio-card-label" for="plan-corp">
+                  <span class="st-radio-card-title">Corporate</span>
+                  <span class="st-radio-card-desc">Unlimited transfers</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Toggle Switch</div>
+          <div class="sc-demo__body">
+            <div style="display:flex;flex-direction:column;gap:var(--st-space-3)">
+              <label class="st-toggle-wrapper">
+                <input type="checkbox" checked>
+                <span class="st-toggle-label">Enable notifications</span>
+              </label>
+              <label class="st-toggle-wrapper">
+                <input type="checkbox">
+                <span class="st-toggle-label">Dark mode</span>
+              </label>
+              <label class="st-toggle-wrapper st-toggle-wrapper--sm">
+                <input type="checkbox" checked>
+                <span class="st-toggle-label">Auto-approve under ₹10,000 (small)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Complete Form</div>
+          <div class="sc-demo__body">
+            <form class="st-form" style="max-width:600px" onsubmit="return false">
+              <div class="st-form-section-title">Beneficiary Details</div>
+              <div class="st-form-row">
+                <div class="st-field">
+                  <label class="st-label" for="bf-name">Full Name <abbr title="required">*</abbr></label>
+                  <input class="st-input" id="bf-name" type="text" placeholder="Beneficiary name">
+                </div>
+                <div class="st-field">
+                  <label class="st-label" for="bf-bank">Bank Name <abbr title="required">*</abbr></label>
+                  <select class="st-select" id="bf-bank">
+                    <option value="">Select bank…</option>
+                    <option>HDFC Bank</option>
+                    <option>SBI</option>
+                    <option>ICICI Bank</option>
+                  </select>
+                </div>
+              </div>
+              <div class="st-form-row">
+                <div class="st-field">
+                  <label class="st-label" for="bf-acc">Account Number <abbr title="required">*</abbr></label>
+                  <input class="st-input" id="bf-acc" type="text" placeholder="XXXXXXXXXXXX">
+                </div>
+                <div class="st-field">
+                  <label class="st-label" for="bf-ifsc">IFSC Code <abbr title="required">*</abbr></label>
+                  <input class="st-input" id="bf-ifsc" type="text" placeholder="HDFC0000001">
+                </div>
+              </div>
+              <div class="st-field">
+                <label class="st-label" for="bf-notes">Notes</label>
+                <textarea class="st-textarea" id="bf-notes" rows="2" placeholder="Reason for transfer…"></textarea>
+              </div>
+              <div class="st-form-actions">
+                <button type="button" class="st-btn st-btn--ghost">Cancel</button>
+                <button type="submit" class="st-btn st-btn--primary">Add Beneficiary</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: CARDS
+           ====================================================== -->
+      <section id="cards" class="sc-section">
+        <h2 class="sc-section-title">Cards</h2>
+        <p class="sc-section-desc">Flexible content containers with header, body, and footer slots. Also includes KPI stat cards.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-card</td><td>Base card container</td></tr>
+              <tr><td>st-card--accent</td><td>Accent-tinted left border variant</td></tr>
+              <tr><td>st-card--flat</td><td>No box-shadow, border only</td></tr>
+              <tr><td>st-card__header</td><td>Header slot — flex row, space-between</td></tr>
+              <tr><td>st-card__title</td><td>Card heading text</td></tr>
+              <tr><td>st-card__subtitle</td><td>Secondary heading text</td></tr>
+              <tr><td>st-card__body</td><td>Main content area with standard padding</td></tr>
+              <tr><td>st-card__body--compact</td><td>Reduced padding (for dense lists)</td></tr>
+              <tr><td>st-card__footer</td><td>Footer slot — flex row with border-top</td></tr>
+              <tr><td>st-stat</td><td>KPI / metric card</td></tr>
+              <tr><td>st-stat__label</td><td>Metric label (can contain an icon)</td></tr>
+              <tr><td>st-stat__value</td><td>Large numeric value</td></tr>
+              <tr><td>st-stat__change</td><td>Trend line below the value</td></tr>
+              <tr><td>st-stat__change--up</td><td>Positive trend (green)</td></tr>
+              <tr><td>st-stat__change--down</td><td>Negative trend (red)</td></tr>
+              <tr><td>st-stat__change--neutral</td><td>No change (gray)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">KPI / Stat Cards</div>
+          <div class="sc-demo__body">
+            <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--st-space-4)">
+              <div class="st-stat">
+                <div class="st-stat__label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  Total Balance
+                </div>
+                <div class="st-stat__value">₹84.2L</div>
+                <div class="st-stat__change st-stat__change--up">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                  +12.5% from last month
+                </div>
+              </div>
+              <div class="st-stat">
+                <div class="st-stat__label">Active Policies</div>
+                <div class="st-stat__value">2,847</div>
+                <div class="st-stat__change st-stat__change--up">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                  +4.3%
+                </div>
+              </div>
+              <div class="st-stat">
+                <div class="st-stat__label">Pending Claims</div>
+                <div class="st-stat__value">143</div>
+                <div class="st-stat__change st-stat__change--down">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  -8.1% this week
+                </div>
+              </div>
+              <div class="st-stat">
+                <div class="st-stat__label">Compliance Score</div>
+                <div class="st-stat__value">98.4%</div>
+                <div class="st-stat__change st-stat__change--neutral">No change</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Standard Cards</div>
+          <div class="sc-demo__body">
+            <div class="st-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--st-space-4);align-items:start">
+              <div class="st-card">
+                <div class="st-card__header">
+                  <div>
+                    <div class="st-card__title">Recent Transactions</div>
+                    <div class="st-card__subtitle">Last 30 days</div>
+                  </div>
+                  <button class="st-btn st-btn--ghost-accent st-btn--sm">View all</button>
+                </div>
+                <div class="st-card__body st-card__body--compact">
+                  <div class="st-list" style="border:none">
+                    <div class="st-list__item">
+                      <div class="st-list__item-icon" style="background:var(--st-success-50);color:var(--st-success-700)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                      </div>
+                      <div class="st-list__item-content">
+                        <div class="st-list__item-title">Credit — Salary</div>
+                        <div class="st-list__item-subtitle">Mar 1, 2026</div>
+                      </div>
+                      <div class="st-list__item-meta">
+                        <div class="st-list__item-meta-primary" style="color:var(--st-color-success-text)">+₹1,20,000</div>
+                      </div>
+                    </div>
+                    <div class="st-list__item">
+                      <div class="st-list__item-icon" style="background:var(--st-danger-50);color:var(--st-danger-700)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                      </div>
+                      <div class="st-list__item-content">
+                        <div class="st-list__item-title">Debit — Rent</div>
+                        <div class="st-list__item-subtitle">Mar 3, 2026</div>
+                      </div>
+                      <div class="st-list__item-meta">
+                        <div class="st-list__item-meta-primary" style="color:var(--st-color-danger-text)">−₹45,000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="st-card__footer">
+                  <span class="st-badge st-badge--success"><span class="st-badge__dot"></span>Account Active</span>
+                  <span style="font-size:var(--st-text-xs);color:var(--st-color-text-tertiary)">Updated just now</span>
+                </div>
+              </div>
+
+              <div class="st-card st-card--accent">
+                <div class="st-card__header">
+                  <div class="st-card__title">Risk Assessment</div>
+                </div>
+                <div class="st-card__body">
+                  <div style="display:flex;flex-direction:column;gap:var(--st-space-3)">
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1)">
+                        <span>Credit Risk</span><span style="font-weight:600;color:var(--st-color-success-text)">Low</span>
+                      </div>
+                      <div class="st-progress"><div class="st-progress__bar st-progress--success" style="width:20%"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1)">
+                        <span>Market Risk</span><span style="font-weight:600;color:var(--st-color-warning-text)">Medium</span>
+                      </div>
+                      <div class="st-progress"><div class="st-progress__bar" style="width:52%;background:var(--st-color-warning)"></div></div>
+                    </div>
+                    <div>
+                      <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1)">
+                        <span>Liquidity Risk</span><span style="font-weight:600;color:var(--st-color-success-text)">Low</span>
+                      </div>
+                      <div class="st-progress"><div class="st-progress__bar" style="width:15%;background:var(--st-color-success)"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: BADGES & ALERTS
+           ====================================================== -->
+      <section id="badges" class="sc-section">
+        <h2 class="sc-section-title">Badges &amp; Alerts</h2>
+        <p class="sc-section-desc">Inline status chips and dismissible notification banners for surfacing system state.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-badge</td><td>Base badge / chip — required</td></tr>
+              <tr><td>st-badge--default</td><td>Neutral gray</td></tr>
+              <tr><td>st-badge--primary</td><td>Accent / brand colour</td></tr>
+              <tr><td>st-badge--success</td><td>Green (approved, active)</td></tr>
+              <tr><td>st-badge--warning</td><td>Amber (pending, review)</td></tr>
+              <tr><td>st-badge--danger</td><td>Red (overdue, error)</td></tr>
+              <tr><td>st-badge--info</td><td>Blue (informational)</td></tr>
+              <tr><td>st-badge--solid-primary</td><td>Filled solid primary</td></tr>
+              <tr><td>st-badge--solid-success</td><td>Filled solid success</td></tr>
+              <tr><td>st-badge--solid-danger</td><td>Filled solid danger</td></tr>
+              <tr><td>st-badge__dot</td><td>Small pulsing dot inside badge</td></tr>
+              <tr><td>st-alert</td><td>Full-width alert banner — required</td></tr>
+              <tr><td>st-alert--info</td><td>Info variant (blue)</td></tr>
+              <tr><td>st-alert--success</td><td>Success variant (green)</td></tr>
+              <tr><td>st-alert--warning</td><td>Warning variant (amber)</td></tr>
+              <tr><td>st-alert--danger</td><td>Danger variant (red)</td></tr>
+              <tr><td>st-alert__icon</td><td>Leading SVG icon</td></tr>
+              <tr><td>st-alert__content</td><td>Content wrapper</td></tr>
+              <tr><td>st-alert__title</td><td>Bold alert heading</td></tr>
+              <tr><td>st-alert__description</td><td>Body text</td></tr>
+              <tr><td>st-alert__close</td><td>Dismiss × button</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Badges</div>
+          <div class="sc-demo__body" style="display:flex;flex-wrap:wrap;gap:var(--st-space-2);align-items:center">
+            <span class="st-badge st-badge--default">Default</span>
+            <span class="st-badge st-badge--primary"><span class="st-badge__dot"></span>Active</span>
+            <span class="st-badge st-badge--success"><span class="st-badge__dot"></span>Approved</span>
+            <span class="st-badge st-badge--warning">Pending</span>
+            <span class="st-badge st-badge--danger">Overdue</span>
+            <span class="st-badge st-badge--info">Processing</span>
+            <span class="st-badge st-badge--solid-primary">New</span>
+            <span class="st-badge st-badge--solid-success">Verified</span>
+            <span class="st-badge st-badge--solid-danger">Critical</span>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Alerts</div>
+          <div class="sc-demo__body" style="display:flex;flex-direction:column;gap:var(--st-space-3)">
+            <div class="st-alert st-alert--info">
+              <svg class="st-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div class="st-alert__content">
+                <div class="st-alert__title">Scheduled Maintenance</div>
+                <div class="st-alert__description">Net banking will be unavailable on March 10, 2026 from 2:00 AM to 4:00 AM for scheduled maintenance.</div>
+              </div>
+            </div>
+            <div class="st-alert st-alert--success">
+              <svg class="st-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div class="st-alert__content">
+                <div class="st-alert__title">KYC Verified</div>
+                <div class="st-alert__description">Your identity has been successfully verified. You can now access all banking features.</div>
+              </div>
+            </div>
+            <div class="st-alert st-alert--warning">
+              <svg class="st-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div class="st-alert__content">
+                <div class="st-alert__title">Transaction Limit Approaching</div>
+                <div class="st-alert__description">You have used ₹4.8L of your ₹5L daily RTGS limit.</div>
+              </div>
+            </div>
+            <div class="st-alert st-alert--danger">
+              <svg class="st-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <div class="st-alert__content">
+                <div class="st-alert__title">Suspicious Activity Detected</div>
+                <div class="st-alert__description">An unusual login attempt was blocked from IP 192.168.1.45. Please review your account immediately.</div>
+              </div>
+              <button class="st-alert__close" aria-label="Dismiss">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: TABS
+           ====================================================== -->
+      <section id="tabs" class="sc-section">
+        <h2 class="sc-section-title">Tabs</h2>
+        <p class="sc-section-desc">CSS-only tab switching using radio inputs. No JavaScript required.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class / Element</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-tabs</td><td>Tab container. Place hidden <code>&lt;input type="radio"&gt;</code> elements as direct children before the list.</td></tr>
+              <tr><td>st-tabs--pills</td><td>Pill-button style instead of underline</td></tr>
+              <tr><td>st-tabs__list</td><td>Tab bar wrapper (<code>role="tablist"</code>)</td></tr>
+              <tr><td>st-tabs__tab</td><td><code>&lt;label&gt;</code> for each radio input — becomes the clickable tab</td></tr>
+              <tr><td>st-tabs__tab-badge</td><td>Count badge inside a tab label</td></tr>
+              <tr><td>st-tabs__panel</td><td>Panel content — shown when its paired radio is checked</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Underline (default)</div>
+          <div class="sc-demo__body">
+            <div class="st-tabs">
+              <input type="radio" name="demo-tabs-1" id="dt1-1" checked>
+              <input type="radio" name="demo-tabs-1" id="dt1-2">
+              <input type="radio" name="demo-tabs-1" id="dt1-3">
+              <div class="st-tabs__list" role="tablist">
+                <label for="dt1-1" class="st-tabs__tab">Overview</label>
+                <label for="dt1-2" class="st-tabs__tab">Transactions <span class="st-tabs__tab-badge">24</span></label>
+                <label for="dt1-3" class="st-tabs__tab">Settings</label>
+              </div>
+              <div class="st-tabs__panel">
+                <p style="margin:0;color:var(--st-color-text-secondary)">Account overview content goes here. Summary of balances, recent activity, and quick actions.</p>
+              </div>
+              <div class="st-tabs__panel">
+                <p style="margin:0;color:var(--st-color-text-secondary)">Transaction history list with filters, date ranges, and export options.</p>
+              </div>
+              <div class="st-tabs__panel">
+                <p style="margin:0;color:var(--st-color-text-secondary)">Account settings — notifications, security, linked accounts, and preferences.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Pills variant</div>
+          <div class="sc-demo__body">
+            <div class="st-tabs st-tabs--pills">
+              <input type="radio" name="demo-tabs-2" id="dt2-1" checked>
+              <input type="radio" name="demo-tabs-2" id="dt2-2">
+              <input type="radio" name="demo-tabs-2" id="dt2-3">
+              <div class="st-tabs__list" role="tablist">
+                <label for="dt2-1" class="st-tabs__tab">Daily</label>
+                <label for="dt2-2" class="st-tabs__tab">Monthly</label>
+                <label for="dt2-3" class="st-tabs__tab">Yearly</label>
+              </div>
+              <div class="st-tabs__panel"><p style="margin:0;color:var(--st-color-text-secondary)">Daily analytics and transaction summary.</p></div>
+              <div class="st-tabs__panel"><p style="margin:0;color:var(--st-color-text-secondary)">Monthly reports, trends, and comparisons.</p></div>
+              <div class="st-tabs__panel"><p style="margin:0;color:var(--st-color-text-secondary)">Annual financial statements and audit trail.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: ACCORDION
+           ====================================================== -->
+      <section id="accordion" class="sc-section">
+        <h2 class="sc-section-title">Accordion</h2>
+        <p class="sc-section-desc">Built on native <code>&lt;details&gt;/&lt;summary&gt;</code> — zero JavaScript, fully accessible.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class / Element</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-accordion</td><td>Accordion wrapper</td></tr>
+              <tr><td>st-accordion__item</td><td>Native <code>&lt;details&gt;</code> element — add <code>open</code> attribute to expand by default</td></tr>
+              <tr><td>st-accordion__title</td><td><code>&lt;span&gt;</code> inside <code>&lt;summary&gt;</code> for the heading text</td></tr>
+              <tr><td>st-accordion__content</td><td>Panel body <code>&lt;div&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Standard</div>
+          <div class="sc-demo__body">
+            <div class="st-accordion" style="max-width:640px">
+              <details class="st-accordion__item" open>
+                <summary>
+                  <span class="st-accordion__title">What documents are needed for KYC?</span>
+                </summary>
+                <div class="st-accordion__content">
+                  You will need a government-issued photo ID (Aadhaar, PAN, Passport, or Voter ID), address proof (utility bill, bank statement dated within 3 months), and a recent passport-size photograph. Digital uploads are accepted via our secure portal.
+                </div>
+              </details>
+              <details class="st-accordion__item">
+                <summary>
+                  <span class="st-accordion__title">How long does a wire transfer take?</span>
+                </summary>
+                <div class="st-accordion__content">
+                  Domestic NEFT transfers are processed in batches and typically complete within 2 hours. RTGS transfers for amounts above ₹2L settle in real time during banking hours (8 AM–6 PM on weekdays). IMPS transfers are instant, 24×7.
+                </div>
+              </details>
+              <details class="st-accordion__item">
+                <summary>
+                  <span class="st-accordion__title">What is the claim settlement process?</span>
+                </summary>
+                <div class="st-accordion__content">
+                  Submit your claim via our portal or mobile app. A claims executive will be assigned within 24 hours. Most health claims are settled within 7 working days; property and motor claims within 15 working days, subject to survey completion.
+                </div>
+              </details>
+              <details class="st-accordion__item">
+                <summary>
+                  <span class="st-accordion__title">Can I change my investment plan?</span>
+                </summary>
+                <div class="st-accordion__content">
+                  Yes. You can switch between fund options during the free-look period (15 days from policy issuance) or at any anniversary date. Note that switching may have tax implications; consult your financial advisor before making changes.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: TABLE
+           ====================================================== -->
+      <section id="table" class="sc-section">
+        <h2 class="sc-section-title">Table</h2>
+        <p class="sc-section-desc">Responsive data tables with sortable columns, row hover, and status badges.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-table-wrapper</td><td>Horizontal-scroll container for overflow on small screens</td></tr>
+              <tr><td>st-table</td><td>Table element with full-width layout and zebra-row styling</td></tr>
+              <tr><td>st-table__sort</td><td><code>&lt;button&gt;</code> inside a <code>&lt;th&gt;</code> for sortable columns</td></tr>
+              <tr><td>st-table__sort--asc</td><td>Ascending sort state indicator</td></tr>
+              <tr><td>st-table__sort--desc</td><td>Descending sort state indicator</td></tr>
+              <tr><td>st-col-num</td><td>Right-aligned numeric cell with tabular figures</td></tr>
+              <tr><td>st-pagination</td><td>Pagination nav wrapper</td></tr>
+              <tr><td>st-pagination__btn</td><td>Individual page / arrow button</td></tr>
+              <tr><td>st-pagination__btn--active</td><td>Currently selected page</td></tr>
+              <tr><td>st-pagination__dots</td><td>Ellipsis separator between page ranges</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Transaction Table</div>
+          <div class="sc-demo__body" style="padding:0">
+            <div class="st-table-wrapper">
+              <table class="st-table">
+                <thead>
+                  <tr>
+                    <th><button class="st-table__sort st-table__sort--asc">Date <svg class="st-table__sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></th>
+                    <th>Description</th>
+                    <th>Account</th>
+                    <th>Status</th>
+                    <th><button class="st-table__sort">Amount <svg class="st-table__sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color:var(--st-color-text-secondary);white-space:nowrap">Mar 06, 2026</td>
+                    <td>
+                      <div style="font-weight:var(--st-font-medium)">NEFT — Acme Corp Ltd</div>
+                      <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary)">Ref: TXN20260306001</div>
+                    </td>
+                    <td style="font-family:var(--st-font-mono);font-size:var(--st-text-xs)">HDFC ****4821</td>
+                    <td><span class="st-badge st-badge--success"><span class="st-badge__dot"></span>Settled</span></td>
+                    <td class="st-col-num" style="color:var(--st-color-success-text);font-weight:var(--st-font-semibold)">+₹5,00,000</td>
+                    <td><button class="st-btn st-btn--ghost st-btn--sm st-btn--icon" aria-label="Actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--st-color-text-secondary);white-space:nowrap">Mar 05, 2026</td>
+                    <td>
+                      <div style="font-weight:var(--st-font-medium)">RTGS — Loan EMI</div>
+                      <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary)">Ref: TXN20260305088</div>
+                    </td>
+                    <td style="font-family:var(--st-font-mono);font-size:var(--st-text-xs)">SBI ****0023</td>
+                    <td><span class="st-badge st-badge--success"><span class="st-badge__dot"></span>Settled</span></td>
+                    <td class="st-col-num" style="color:var(--st-color-danger-text);font-weight:var(--st-font-semibold)">−₹28,500</td>
+                    <td><button class="st-btn st-btn--ghost st-btn--sm st-btn--icon" aria-label="Actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--st-color-text-secondary);white-space:nowrap">Mar 05, 2026</td>
+                    <td>
+                      <div style="font-weight:var(--st-font-medium)">IMPS — Merchant Payment</div>
+                      <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary)">Ref: TXN20260305212</div>
+                    </td>
+                    <td style="font-family:var(--st-font-mono);font-size:var(--st-text-xs)">ICICI ****7712</td>
+                    <td><span class="st-badge st-badge--warning">Pending</span></td>
+                    <td class="st-col-num" style="color:var(--st-color-danger-text);font-weight:var(--st-font-semibold)">−₹3,200</td>
+                    <td><button class="st-btn st-btn--ghost st-btn--sm st-btn--icon" aria-label="Actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--st-color-text-secondary);white-space:nowrap">Mar 04, 2026</td>
+                    <td>
+                      <div style="font-weight:var(--st-font-medium)">UPI — Grocery Store</div>
+                      <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary)">Ref: TXN20260304557</div>
+                    </td>
+                    <td style="font-family:var(--st-font-mono);font-size:var(--st-text-xs)">HDFC ****4821</td>
+                    <td><span class="st-badge st-badge--danger">Failed</span></td>
+                    <td class="st-col-num" style="color:var(--st-color-text-tertiary);font-weight:var(--st-font-semibold)">−₹1,850</td>
+                    <td><button class="st-btn st-btn--ghost st-btn--sm st-btn--icon" aria-label="Actions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--st-space-4) var(--st-space-4) 0;flex-wrap:wrap;gap:var(--st-space-3)">
+              <span style="font-size:var(--st-text-sm);color:var(--st-color-text-secondary)">Showing 4 of 248 transactions</span>
+              <nav class="st-pagination" aria-label="Pagination">
+                <button class="st-pagination__btn" disabled aria-label="Previous">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="st-pagination__btn st-pagination__btn--active">1</button>
+                <button class="st-pagination__btn">2</button>
+                <button class="st-pagination__btn">3</button>
+                <span class="st-pagination__dots">…</span>
+                <button class="st-pagination__btn">25</button>
+                <button class="st-pagination__btn" aria-label="Next">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: AVATARS
+           ====================================================== -->
+      <section id="avatars" class="sc-section">
+        <h2 class="sc-section-title">Avatar</h2>
+        <p class="sc-section-desc">User identity circles with size, status, and stacked group variants.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-avatar</td><td>Base avatar circle — required</td></tr>
+              <tr><td>st-avatar--xs</td><td>Extra-small (20 px)</td></tr>
+              <tr><td>st-avatar--sm</td><td>Small (28 px)</td></tr>
+              <tr><td>st-avatar--md</td><td>Medium / default (36 px)</td></tr>
+              <tr><td>st-avatar--lg</td><td>Large (48 px)</td></tr>
+              <tr><td>st-avatar--xl</td><td>Extra-large (64 px)</td></tr>
+              <tr><td>st-avatar-wrap</td><td>Wrapper needed when adding a status dot</td></tr>
+              <tr><td>st-avatar-status</td><td>Status indicator dot — required</td></tr>
+              <tr><td>st-avatar-status--online</td><td>Green / online</td></tr>
+              <tr><td>st-avatar-status--away</td><td>Amber / away</td></tr>
+              <tr><td>st-avatar-status--busy</td><td>Red / do-not-disturb</td></tr>
+              <tr><td>st-avatar-status--offline</td><td>Gray / offline</td></tr>
+              <tr><td>st-avatar-group</td><td>Stacked overlapping avatar row</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Sizes</div>
+          <div class="sc-demo__body" style="display:flex;align-items:center;gap:var(--st-space-4)">
+            <span class="st-avatar st-avatar--xs">RK</span>
+            <span class="st-avatar st-avatar--sm">RK</span>
+            <span class="st-avatar st-avatar--md">RK</span>
+            <span class="st-avatar st-avatar--lg">RK</span>
+            <span class="st-avatar st-avatar--xl">RK</span>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">With Status</div>
+          <div class="sc-demo__body" style="display:flex;align-items:center;gap:var(--st-space-5)">
+            <div class="st-avatar-wrap">
+              <span class="st-avatar st-avatar--lg">RK</span>
+              <span class="st-avatar-status st-avatar-status--online"></span>
+            </div>
+            <div class="st-avatar-wrap">
+              <span class="st-avatar st-avatar--lg" style="background:var(--st-warning-50);color:var(--st-warning-700)">AM</span>
+              <span class="st-avatar-status st-avatar-status--away"></span>
+            </div>
+            <div class="st-avatar-wrap">
+              <span class="st-avatar st-avatar--lg" style="background:var(--st-danger-50);color:var(--st-danger-700)">SP</span>
+              <span class="st-avatar-status st-avatar-status--busy"></span>
+            </div>
+            <div class="st-avatar-wrap">
+              <span class="st-avatar st-avatar--lg" style="background:var(--st-neutral-100);color:var(--st-neutral-500)">JD</span>
+              <span class="st-avatar-status st-avatar-status--offline"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Stacked Group</div>
+          <div class="sc-demo__body">
+            <div class="st-avatar-group">
+              <span class="st-avatar st-avatar--md" style="background:var(--st-info-50);color:var(--st-info-700)">+5</span>
+              <span class="st-avatar st-avatar--md" style="background:var(--st-warning-50);color:var(--st-warning-700)">SP</span>
+              <span class="st-avatar st-avatar--md" style="background:var(--st-danger-50);color:var(--st-danger-700)">AM</span>
+              <span class="st-avatar st-avatar--md">RK</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: PROGRESS & STEPS
+           ====================================================== -->
+      <section id="progress" class="sc-section">
+        <h2 class="sc-section-title">Progress &amp; Steps</h2>
+        <p class="sc-section-desc">Linear progress bars and horizontal step indicators for multi-stage flows.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-progress</td><td>Progress bar track — required</td></tr>
+              <tr><td>st-progress--lg</td><td>Taller track (8 px instead of 4 px)</td></tr>
+              <tr><td>st-progress--success</td><td>Green track colour</td></tr>
+              <tr><td>st-progress__bar</td><td>Filled portion; set <code>width</code> inline as a percentage</td></tr>
+              <tr><td>st-steps</td><td>Horizontal step indicator wrapper</td></tr>
+              <tr><td>st-step</td><td>Individual step — pending by default</td></tr>
+              <tr><td>st-step--completed</td><td>Completed state (checkmark)</td></tr>
+              <tr><td>st-step--active</td><td>Current / in-progress state (pulsing)</td></tr>
+              <tr><td>st-step__marker</td><td>Visual dot / icon</td></tr>
+              <tr><td>st-step__label</td><td>Step label text</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Progress Bars</div>
+          <div class="sc-demo__body" style="display:flex;flex-direction:column;gap:var(--st-space-4);max-width:500px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1\.5)">
+                <span>KYC Completion</span><span style="font-weight:600;color:var(--st-color-accent-text)">72%</span>
+              </div>
+              <div class="st-progress st-progress--lg"><div class="st-progress__bar" style="width:72%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1\.5)">
+                <span>Policy Limit Used</span><span style="font-weight:600;color:var(--st-color-success-text)">35%</span>
+              </div>
+              <div class="st-progress"><div class="st-progress__bar" style="width:35%;background:var(--st-color-success)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--st-text-xs);margin-bottom:var(--st-space-1\.5)">
+                <span>Monthly Spend</span><span style="font-weight:600;color:var(--st-color-warning-text)">88%</span>
+              </div>
+              <div class="st-progress"><div class="st-progress__bar" style="width:88%;background:var(--st-color-warning)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">Step Indicator</div>
+          <div class="sc-demo__body">
+            <div class="st-steps">
+              <div class="st-step st-step--completed">
+                <div class="st-step__marker"></div>
+                <div class="st-step__label">KYC Submitted</div>
+              </div>
+              <div class="st-step st-step--completed">
+                <div class="st-step__marker"></div>
+                <div class="st-step__label">Verification</div>
+              </div>
+              <div class="st-step st-step--active">
+                <div class="st-step__marker"></div>
+                <div class="st-step__label">Approval</div>
+              </div>
+              <div class="st-step">
+                <div class="st-step__marker"></div>
+                <div class="st-step__label">Account Active</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: GRID & LAYOUT
+           ====================================================== -->
+      <section id="layout" class="sc-section">
+        <h2 class="sc-section-title">Grid &amp; Layout</h2>
+        <p class="sc-section-desc">12-column responsive grid. Columns collapse on smaller viewports.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-grid</td><td>12-column CSS Grid container</td></tr>
+              <tr><td>st-grid--gap-2</td><td>0.5 rem column and row gap</td></tr>
+              <tr><td>st-grid--gap-4</td><td>1 rem gap (default)</td></tr>
+              <tr><td>st-grid--gap-6</td><td>1.5 rem gap</td></tr>
+              <tr><td>st-col-1 … st-col-12</td><td>Span 1–12 columns; collapses to full-width on mobile</td></tr>
+              <tr><td>st-content</td><td>Max-width content wrapper with horizontal padding</td></tr>
+              <tr><td>st-page-header</td><td>Page title bar with breadcrumb and action area</td></tr>
+              <tr><td>st-page-header__title</td><td>Large page heading</td></tr>
+              <tr><td>st-page-header__subtitle</td><td>Supporting description</td></tr>
+              <tr><td>st-page-header__breadcrumb</td><td>Breadcrumb nav inside the page header</td></tr>
+              <tr><td>st-page-header__actions</td><td>Right-aligned action buttons slot</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sc-demo">
+          <div class="sc-demo__label">12-column grid</div>
+          <div class="sc-demo__body">
+            <div class="st-grid st-grid--gap-2">
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+              <div class="st-col-1 sc-grid-cell">1</div>
+
+              <div class="st-col-4 sc-grid-cell">4</div>
+              <div class="st-col-8 sc-grid-cell">8</div>
+
+              <div class="st-col-6 sc-grid-cell">6</div>
+              <div class="st-col-6 sc-grid-cell">6</div>
+
+              <div class="st-col-3 sc-grid-cell">3</div>
+              <div class="st-col-3 sc-grid-cell">3</div>
+              <div class="st-col-3 sc-grid-cell">3</div>
+              <div class="st-col-3 sc-grid-cell">3</div>
+
+              <div class="st-col-12 sc-grid-cell">12</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: WORKFLOW TRACKER
+           ====================================================== -->
+      <section id="workflow" class="sc-section">
+        <h2 class="sc-section-title">Workflow Tracker</h2>
+        <p class="sc-section-desc">Visual process status for loan approvals, claim handling, and onboarding. Supports drill-down sub-flows, parallel branches, and all state variants.</p>
+
+        <div class="sc-spec">
+          <table>
+            <thead><tr><th>Class</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>st-workflow</td><td>Horizontal stage-track container</td></tr>
+              <tr><td>st-workflow--compact</td><td>Reduced spacing variant for dense contexts</td></tr>
+              <tr><td>st-wf-container</td><td>Multi-panel drill-down wrapper; shows the panel matching <code>:target</code></td></tr>
+              <tr><td>st-wf-panel</td><td>Individual drill-down panel; revealed by CSS <code>:target</code></td></tr>
+              <tr><td>st-wf-stage</td><td>Single step inside the workflow — pending by default</td></tr>
+              <tr><td>st-wf-stage--complete</td><td>Completed stage (filled marker, green)</td></tr>
+              <tr><td>st-wf-stage--active</td><td>In-progress stage (pulsing accent marker)</td></tr>
+              <tr><td>st-wf-stage--error</td><td>Failed / blocked stage (red marker)</td></tr>
+              <tr><td>st-wf-stage--has-sub</td><td>Clickable stage that links into a sub-panel; use as <code>&lt;a&gt;</code></td></tr>
+              <tr><td>st-wf-stage__marker</td><td>Visual dot indicator</td></tr>
+              <tr><td>st-wf-stage__label</td><td>Stage name text</td></tr>
+              <tr><td>st-wf-stage__meta</td><td>Secondary metadata (date, status text)</td></tr>
+              <tr><td>st-wf-breadcrumb</td><td>Back-navigation bar inside a sub-panel</td></tr>
+              <tr><td>st-wf-breadcrumb__link</td><td>Ancestor panel link</td></tr>
+              <tr><td>st-wf-breadcrumb__sep</td><td>Separator character</td></tr>
+              <tr><td>st-wf-breadcrumb__current</td><td>Current panel label</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Demo 1: Banking Loan Approval — simple horizontal -->
+        <div class="sc-demo">
+          <div class="sc-demo__label">Banking — Loan Approval (horizontal)</div>
+          <div class="st-workflow" role="list" aria-label="Loan Approval Process">
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Application</div>
+              <div class="st-wf-stage__meta">28 Feb 2026</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Documents</div>
+              <div class="st-wf-stage__meta">01 Mar 2026</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--active" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="In progress"></div>
+              <div class="st-wf-stage__label">Credit Review</div>
+              <div class="st-wf-stage__meta">In progress</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Underwriting</div>
+              <div class="st-wf-stage__meta">Pending</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Disbursement</div>
+              <div class="st-wf-stage__meta">Pending</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 2: Insurance Claim — drill-down (2 levels) -->
+        <div class="sc-demo">
+          <div class="sc-demo__label">Insurance — Claim Process (drill-down sub-flows)</div>
+          <div class="st-wf-container">
+
+            <!-- Root panel -->
+            <div class="st-wf-panel" id="wf-claim-root">
+              <div class="st-workflow" role="list" aria-label="Claim Process">
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">Filed</div>
+                  <div class="st-wf-stage__meta">24 Feb 2026</div>
+                </div>
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">Documents</div>
+                  <div class="st-wf-stage__meta">26 Feb 2026</div>
+                </div>
+                <a href="#wf-investigation" class="st-wf-stage st-wf-stage--active st-wf-stage--has-sub" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="In progress — click to expand"></div>
+                  <div class="st-wf-stage__label">Investigation</div>
+                  <div class="st-wf-stage__meta">3 of 5 steps</div>
+                </a>
+                <div class="st-wf-stage" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">Approval</div>
+                  <div class="st-wf-stage__meta">Pending</div>
+                </div>
+                <div class="st-wf-stage" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">Settlement</div>
+                  <div class="st-wf-stage__meta">Pending</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-panel: Investigation -->
+            <div class="st-wf-panel" id="wf-investigation">
+              <nav class="st-wf-breadcrumb" aria-label="Workflow navigation">
+                <a href="#wf-claim-root" class="st-wf-breadcrumb__link">Claim Process</a>
+                <span class="st-wf-breadcrumb__sep" aria-hidden="true">›</span>
+                <span class="st-wf-breadcrumb__current" aria-current="page">Investigation</span>
+              </nav>
+              <div class="st-workflow" role="list" aria-label="Investigation sub-flow">
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">Field Visit</div>
+                  <div class="st-wf-stage__meta">27 Feb 2026</div>
+                </div>
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">Photos &amp; Report</div>
+                  <div class="st-wf-stage__meta">28 Feb 2026</div>
+                </div>
+                <a href="#wf-fraud" class="st-wf-stage st-wf-stage--active st-wf-stage--has-sub" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="In progress — click to expand"></div>
+                  <div class="st-wf-stage__label">Fraud Screen</div>
+                  <div class="st-wf-stage__meta">Running checks</div>
+                </a>
+                <div class="st-wf-stage" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">Legal Review</div>
+                  <div class="st-wf-stage__meta">Pending</div>
+                </div>
+                <div class="st-wf-stage" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">Sign-off</div>
+                  <div class="st-wf-stage__meta">Pending</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-panel level 2: Fraud Screening -->
+            <div class="st-wf-panel" id="wf-fraud">
+              <nav class="st-wf-breadcrumb" aria-label="Workflow navigation">
+                <a href="#wf-claim-root" class="st-wf-breadcrumb__link">Claim Process</a>
+                <span class="st-wf-breadcrumb__sep" aria-hidden="true">›</span>
+                <a href="#wf-investigation" class="st-wf-breadcrumb__link">Investigation</a>
+                <span class="st-wf-breadcrumb__sep" aria-hidden="true">›</span>
+                <span class="st-wf-breadcrumb__current" aria-current="page">Fraud Screening</span>
+              </nav>
+              <div class="st-workflow" role="list" aria-label="Fraud Screening checks">
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">ID Verify</div>
+                  <div class="st-wf-stage__meta">Passed</div>
+                </div>
+                <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">History Check</div>
+                  <div class="st-wf-stage__meta">Passed</div>
+                </div>
+                <div class="st-wf-stage st-wf-stage--active" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="In progress"></div>
+                  <div class="st-wf-stage__label">Pattern Analysis</div>
+                  <div class="st-wf-stage__meta">Analysing</div>
+                </div>
+                <div class="st-wf-stage" role="listitem">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">Risk Score</div>
+                  <div class="st-wf-stage__meta">Pending</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p style="font-size:var(--st-text-xs);color:var(--st-color-text-tertiary);margin-top:var(--st-space-2);padding-left:var(--st-space-2)">Stages with a <strong>+</strong> badge on the marker are drillable — click to expand the sub-flow. Use the breadcrumb to navigate back up.</p>
+        </div>
+
+        <!-- Demo 3: FinTech Onboarding — parallel branches -->
+        <div class="sc-demo">
+          <div class="sc-demo__label">FinTech — Onboarding (parallel checks)</div>
+          <div class="st-workflow" role="list" aria-label="Onboarding Process">
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Registration</div>
+              <div class="st-wf-stage__meta">03 Mar 2026</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">KYC Upload</div>
+              <div class="st-wf-stage__meta">03 Mar 2026</div>
+            </div>
+
+            <!-- Parallel checks -->
+            <div class="st-wf-parallel" role="listitem" aria-label="Parallel verification checks">
+              <div class="st-wf-parallel__header" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4h4v8H2M10 4h4v8h-4M6 8h4"/></svg>
+                <span>Parallel</span>
+              </div>
+              <div class="st-wf-parallel__branch">
+                <div class="st-wf-stage st-wf-stage--complete">
+                  <div class="st-wf-stage__marker" aria-label="Completed"></div>
+                  <div class="st-wf-stage__label">Background Check</div>
+                </div>
+              </div>
+              <div class="st-wf-parallel__branch">
+                <div class="st-wf-stage st-wf-stage--active">
+                  <div class="st-wf-stage__marker" aria-label="In progress"></div>
+                  <div class="st-wf-stage__label">Credit Score</div>
+                </div>
+              </div>
+              <div class="st-wf-parallel__branch">
+                <div class="st-wf-stage">
+                  <div class="st-wf-stage__marker" aria-label="Pending"></div>
+                  <div class="st-wf-stage__label">AML Screening</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Decision</div>
+              <div class="st-wf-stage__meta">Pending</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Account Open</div>
+              <div class="st-wf-stage__meta">Pending</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 4: Error + Blocked states -->
+        <div class="sc-demo">
+          <div class="sc-demo__label">Error &amp; Blocked states</div>
+          <div class="st-workflow" role="list" aria-label="Error and blocked example">
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Submitted</div>
+              <div class="st-wf-stage__meta">01 Mar 2026</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Validated</div>
+              <div class="st-wf-stage__meta">01 Mar 2026</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--error" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Error"></div>
+              <div class="st-wf-stage__label">API Sync</div>
+              <div class="st-wf-stage__meta">Connection failed</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--blocked" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Blocked"></div>
+              <div class="st-wf-stage__label">Compliance</div>
+              <div class="st-wf-stage__meta">Awaiting doc</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Final Sign-off</div>
+              <div class="st-wf-stage__meta">Pending</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 5: Compact variant -->
+        <div class="sc-demo">
+          <div class="sc-demo__label">Compact variant (.st-workflow--compact)</div>
+          <div class="st-workflow st-workflow--compact" role="list" aria-label="Compact workflow">
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Intake</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--complete" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Completed"></div>
+              <div class="st-wf-stage__label">Triage</div>
+            </div>
+            <div class="st-wf-stage st-wf-stage--active" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="In progress"></div>
+              <div class="st-wf-stage__label">Review</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Approve</div>
+            </div>
+            <div class="st-wf-stage" role="listitem">
+              <div class="st-wf-stage__marker" aria-label="Pending"></div>
+              <div class="st-wf-stage__label">Close</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Footer -->
+      <footer style="margin-top:var(--st-space-16);padding-top:var(--st-space-8);border-top:1px solid var(--st-color-border);text-align:center;color:var(--st-color-text-tertiary);font-size:var(--st-text-sm)">
+        Sitara Design System v1.0 &mdash; Built for enterprise. Banks. FinTechs. Insurance.
+      </footer>
+
+    </div><!-- /st-content -->
+  </main>
+</div><!-- /st-app -->
+
+<script>
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    // Update active theme card
+    document.querySelectorAll('.sc-theme-card').forEach(c => c.classList.remove('sc-theme-card--active'));
+    if (theme) {
+      const card = document.querySelector(`.sc-theme-card[data-theme="${theme}"]`);
+      if (card) card.classList.add('sc-theme-card--active');
+    }
+    return false;
+  }
+
+  function scrollTo(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Update active nav item
+      document.querySelectorAll('.st-sidebar__item').forEach(i => i.classList.remove('st-sidebar__item--active'));
+      e.currentTarget.classList.add('st-sidebar__item--active');
+    }
+  }
+
+  // Highlight nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.st-sidebar__item[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(i => i.classList.remove('st-sidebar__item--active'));
+        const active = document.querySelector(`.st-sidebar__item[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('st-sidebar__item--active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Workflow drill-down: prevent scroll jump when :target hash changes
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a.st-wf-stage--has-sub, a.st-wf-breadcrumb__link');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href || !href.startsWith('#wf-')) return;
+    e.preventDefault();
+    var savedY = window.scrollY;
+    location.hash = href.slice(1);
+    requestAnimationFrame(function() {
+      window.scrollTo(0, savedY);
+    });
+  });
+</script>
+</body>
+</html>

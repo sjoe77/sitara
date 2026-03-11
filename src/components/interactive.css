@@ -1,0 +1,1153 @@
+/* ==========================================================================
+   Sitara — Interactive Components
+   Tabs, Accordion (CSS-only using details/summary and radio inputs)
+   Modal, Tooltip, Popover
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Tabs — Radio-input technique (CSS only, no JS)
+   Usage:
+     <div class="st-tabs">
+       <input type="radio" name="tabs-1" id="tab-1-1" checked hidden>
+       <input type="radio" name="tabs-1" id="tab-1-2" hidden>
+       <div class="st-tabs__list" role="tablist">
+         <label for="tab-1-1" class="st-tabs__tab">Overview</label>
+         <label for="tab-1-2" class="st-tabs__tab">Details</label>
+       </div>
+       <div class="st-tabs__panel">Content 1</div>
+       <div class="st-tabs__panel">Content 2</div>
+     </div>
+   ------------------------------------------------------------------------- */
+
+.st-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.st-tabs__list {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--st-color-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.st-tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+.st-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--st-space-2);
+  padding: var(--st-space-3) var(--st-space-4);
+  font-size: var(--st-text-sm);
+  font-weight: var(--st-font-medium);
+  color: var(--st-color-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: all var(--st-transition-fast);
+  user-select: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.st-tabs__tab:hover {
+  color: var(--st-color-text);
+  border-bottom-color: var(--st-color-border-strong);
+}
+
+.st-tabs__tab-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.st-tabs__tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding-inline: var(--st-space-1);
+  background: var(--st-color-bg-subtle);
+  border-radius: var(--st-radius-full);
+  font-size: var(--st-text-2xs);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text-secondary);
+}
+
+/* Radio input controlling active tab */
+.st-tabs > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Show active tab panel based on checked radio */
+.st-tabs > .st-tabs__panel {
+  display: none;
+  padding-top: var(--st-space-6);
+  animation: st-tab-in var(--st-duration-base) var(--st-ease-out) both;
+}
+
+/* These need to be defined per-tab since CSS can't dynamically map */
+/* Supports up to 8 tabs */
+.st-tabs > input:nth-of-type(1):checked ~ .st-tabs__list .st-tabs__tab:nth-child(1),
+.st-tabs > input:nth-of-type(2):checked ~ .st-tabs__list .st-tabs__tab:nth-child(2),
+.st-tabs > input:nth-of-type(3):checked ~ .st-tabs__list .st-tabs__tab:nth-child(3),
+.st-tabs > input:nth-of-type(4):checked ~ .st-tabs__list .st-tabs__tab:nth-child(4),
+.st-tabs > input:nth-of-type(5):checked ~ .st-tabs__list .st-tabs__tab:nth-child(5),
+.st-tabs > input:nth-of-type(6):checked ~ .st-tabs__list .st-tabs__tab:nth-child(6),
+.st-tabs > input:nth-of-type(7):checked ~ .st-tabs__list .st-tabs__tab:nth-child(7),
+.st-tabs > input:nth-of-type(8):checked ~ .st-tabs__list .st-tabs__tab:nth-child(8) {
+  color: var(--st-color-accent-text);
+  border-bottom-color: var(--st-color-accent);
+  font-weight: var(--st-font-semibold);
+}
+
+.st-tabs > input:nth-of-type(1):checked ~ .st-tabs__panel:nth-of-type(1),
+.st-tabs > input:nth-of-type(2):checked ~ .st-tabs__panel:nth-of-type(2),
+.st-tabs > input:nth-of-type(3):checked ~ .st-tabs__panel:nth-of-type(3),
+.st-tabs > input:nth-of-type(4):checked ~ .st-tabs__panel:nth-of-type(4),
+.st-tabs > input:nth-of-type(5):checked ~ .st-tabs__panel:nth-of-type(5),
+.st-tabs > input:nth-of-type(6):checked ~ .st-tabs__panel:nth-of-type(6),
+.st-tabs > input:nth-of-type(7):checked ~ .st-tabs__panel:nth-of-type(7),
+.st-tabs > input:nth-of-type(8):checked ~ .st-tabs__panel:nth-of-type(8) {
+  display: block;
+}
+
+@keyframes st-tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tabs variant: Pills */
+.st-tabs--pills .st-tabs__list {
+  border-bottom: none;
+  background: var(--st-color-bg-subtle);
+  border-radius: var(--st-radius-lg);
+  padding: var(--st-space-1);
+  gap: var(--st-space-1);
+}
+
+.st-tabs--pills .st-tabs__tab {
+  border-bottom: none;
+  border-radius: var(--st-radius-md);
+  margin-bottom: 0;
+  padding: var(--st-space-2) var(--st-space-3);
+}
+
+.st-tabs--pills .st-tabs__tab:hover {
+  background: var(--st-color-surface);
+}
+
+.st-tabs--pills > input:nth-of-type(1):checked ~ .st-tabs__list .st-tabs__tab:nth-child(1),
+.st-tabs--pills > input:nth-of-type(2):checked ~ .st-tabs__list .st-tabs__tab:nth-child(2),
+.st-tabs--pills > input:nth-of-type(3):checked ~ .st-tabs__list .st-tabs__tab:nth-child(3),
+.st-tabs--pills > input:nth-of-type(4):checked ~ .st-tabs__list .st-tabs__tab:nth-child(4),
+.st-tabs--pills > input:nth-of-type(5):checked ~ .st-tabs__list .st-tabs__tab:nth-child(5),
+.st-tabs--pills > input:nth-of-type(6):checked ~ .st-tabs__list .st-tabs__tab:nth-child(6) {
+  background: var(--st-color-surface);
+  color: var(--st-color-accent-text);
+  border-bottom-color: transparent;
+  box-shadow: var(--st-shadow-sm);
+}
+
+/* Tabs variant: Bordered (card-like) */
+.st-tabs--bordered .st-tabs__tab {
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--st-radius-md) var(--st-radius-md) 0 0;
+  margin-bottom: -1px;
+}
+
+.st-tabs--bordered > input:nth-of-type(1):checked ~ .st-tabs__list .st-tabs__tab:nth-child(1),
+.st-tabs--bordered > input:nth-of-type(2):checked ~ .st-tabs__list .st-tabs__tab:nth-child(2),
+.st-tabs--bordered > input:nth-of-type(3):checked ~ .st-tabs__list .st-tabs__tab:nth-child(3),
+.st-tabs--bordered > input:nth-of-type(4):checked ~ .st-tabs__list .st-tabs__tab:nth-child(4) {
+  background: var(--st-color-surface);
+  border-color: var(--st-color-border);
+  border-bottom-color: var(--st-color-surface);
+  color: var(--st-color-text);
+}
+
+/* -------------------------------------------------------------------------
+   Accordion — using HTML <details>/<summary>
+   No JS required, fully accessible
+   ------------------------------------------------------------------------- */
+
+.st-accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-card-radius);
+  overflow: hidden;
+}
+
+.st-accordion__item {
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.st-accordion__item:last-child {
+  border-bottom: none;
+}
+
+.st-accordion__item > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--st-space-4);
+  padding: var(--st-space-4) var(--st-space-5);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--st-text-sm);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+  background: var(--st-color-surface);
+  transition: background var(--st-transition-fast);
+  user-select: none;
+  outline: none;
+}
+
+.st-accordion__item > summary::-webkit-details-marker {
+  display: none;
+}
+
+.st-accordion__item > summary:hover {
+  background: var(--st-color-bg-subtle);
+}
+
+.st-accordion__item > summary:focus-visible {
+  outline: 2px solid var(--st-color-accent);
+  outline-offset: -2px;
+}
+
+/* Chevron icon */
+.st-accordion__item > summary::after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform var(--st-transition-base);
+  flex-shrink: 0;
+}
+
+.st-accordion__item[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.st-accordion__item[open] > summary {
+  color: var(--st-color-accent-text);
+  background: var(--st-color-accent-subtle);
+}
+
+/* Content area */
+.st-accordion__content {
+  padding: var(--st-space-4) var(--st-space-5);
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+  line-height: var(--st-leading-relaxed);
+  border-top: 1px solid var(--st-color-border);
+  animation: st-accordion-open var(--st-duration-base) var(--st-ease-out);
+}
+
+@keyframes st-accordion-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon in summary header */
+.st-accordion__title {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-3);
+  flex: 1;
+}
+
+.st-accordion__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--st-color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.st-accordion__item[open] .st-accordion__icon {
+  color: var(--st-color-accent);
+}
+
+/* Flush variant (no border) */
+.st-accordion--flush {
+  border: none;
+  border-radius: 0;
+}
+
+.st-accordion--flush .st-accordion__item {
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.st-accordion--flush .st-accordion__item > summary {
+  padding-inline: 0;
+}
+
+.st-accordion--flush .st-accordion__content {
+  padding-inline: 0;
+}
+
+/* Separated variant (cards with gap) */
+.st-accordion--separated {
+  border: none;
+  gap: var(--st-space-3);
+}
+
+.st-accordion--separated .st-accordion__item {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-card-radius);
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Modal / Dialog
+   Uses <dialog> element — JS needed for showModal() but CSS handles
+   the visual presentation completely
+   ------------------------------------------------------------------------- */
+
+.st-modal {
+  padding: 0;
+  border: none;
+  background: var(--st-color-surface);
+  border-radius: var(--st-radius-2xl);
+  box-shadow: var(--st-shadow-2xl);
+  max-width: min(90vw, 560px);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: st-modal-in var(--st-duration-slow) var(--st-ease-out) both;
+}
+
+.st-modal::backdrop {
+  background: rgb(15 23 42 / 0.5);
+  backdrop-filter: blur(4px);
+  animation: st-modal-bg-in var(--st-duration-slow) var(--st-ease-out) both;
+}
+
+@keyframes st-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes st-modal-bg-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.st-modal--sm { max-width: min(90vw, 400px); }
+.st-modal--lg { max-width: min(90vw, 760px); }
+.st-modal--xl { max-width: min(90vw, 1024px); }
+
+.st-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--st-space-4);
+  padding: var(--st-space-5) var(--st-space-6);
+  border-bottom: 1px solid var(--st-color-border);
+  flex-shrink: 0;
+}
+
+.st-modal__title {
+  font-size: var(--st-text-lg);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+  margin: 0;
+}
+
+.st-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: var(--st-radius-md);
+  cursor: pointer;
+  color: var(--st-color-text-secondary);
+  transition: all var(--st-transition-fast);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.st-modal__close:hover {
+  background: var(--st-color-bg-subtle);
+  color: var(--st-color-text);
+}
+
+.st-modal__body {
+  flex: 1;
+  padding: var(--st-space-6);
+  overflow-y: auto;
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+  line-height: var(--st-leading-relaxed);
+}
+
+.st-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--st-space-3);
+  padding: var(--st-space-4) var(--st-space-6);
+  border-top: 1px solid var(--st-color-border);
+  background: var(--st-color-surface-sunken);
+  flex-shrink: 0;
+}
+
+.st-modal__footer--start {
+  justify-content: flex-start;
+}
+
+.st-modal__footer--between {
+  justify-content: space-between;
+}
+
+/* -------------------------------------------------------------------------
+   Tooltip — CSS only via :hover/:focus-within
+   ------------------------------------------------------------------------- */
+
+.st-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.st-tooltip__content {
+  position: absolute;
+  bottom: calc(100% + var(--st-space-2));
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--st-neutral-900);
+  color: white;
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-medium);
+  padding: var(--st-space-1\.5) var(--st-space-3);
+  border-radius: var(--st-radius-md);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--st-transition-fast), transform var(--st-transition-fast);
+  z-index: var(--st-z-dropdown);
+  max-width: 240px;
+  white-space: normal;
+  text-align: center;
+  line-height: var(--st-leading-snug);
+  box-shadow: var(--st-shadow-lg);
+}
+
+.st-tooltip__content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--st-neutral-900);
+}
+
+.st-tooltip:hover .st-tooltip__content,
+.st-tooltip:focus-within .st-tooltip__content {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Tooltip positions */
+.st-tooltip--bottom .st-tooltip__content {
+  bottom: auto;
+  top: calc(100% + var(--st-space-2));
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.st-tooltip--bottom .st-tooltip__content::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--st-neutral-900);
+}
+
+.st-tooltip--bottom:hover .st-tooltip__content {
+  transform: translateX(-50%) translateY(0);
+}
+
+.st-tooltip--left .st-tooltip__content {
+  bottom: auto;
+  left: auto;
+  right: calc(100% + var(--st-space-2));
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+}
+
+.st-tooltip--left .st-tooltip__content::after {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+  border-left-color: var(--st-neutral-900);
+}
+
+.st-tooltip--left:hover .st-tooltip__content {
+  transform: translateY(-50%) translateX(0);
+}
+
+.st-tooltip--right .st-tooltip__content {
+  bottom: auto;
+  left: calc(100% + var(--st-space-2));
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.st-tooltip--right .st-tooltip__content::after {
+  top: 50%;
+  left: auto;
+  right: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+  border-right-color: var(--st-neutral-900);
+}
+
+.st-tooltip--right:hover .st-tooltip__content {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* -------------------------------------------------------------------------
+   Progress / Steps
+   ------------------------------------------------------------------------- */
+
+.st-progress {
+  height: 8px;
+  background: var(--st-color-bg-subtle);
+  border-radius: var(--st-radius-full);
+  overflow: hidden;
+}
+
+.st-progress__bar {
+  height: 100%;
+  background: var(--st-color-accent);
+  border-radius: var(--st-radius-full);
+  transition: width var(--st-transition-slow);
+}
+
+.st-progress--success .st-progress__bar { background: var(--st-color-success); }
+.st-progress--warning .st-progress__bar { background: var(--st-color-warning); }
+.st-progress--danger  .st-progress__bar { background: var(--st-color-danger);  }
+
+.st-progress--sm { height: 4px; }
+.st-progress--lg { height: 12px; }
+
+/* Steps indicator */
+.st-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  counter-reset: steps;
+}
+
+.st-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--st-space-2);
+  flex: 1;
+  counter-increment: steps;
+  position: relative;
+}
+
+.st-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  height: 2px;
+  background: var(--st-color-border);
+}
+
+.st-step--completed:not(:last-child)::after {
+  background: var(--st-color-accent);
+}
+
+.st-step__marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--st-color-bg-subtle);
+  border: 2px solid var(--st-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--st-text-sm);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text-tertiary);
+  transition: all var(--st-transition-base);
+  position: relative;
+  z-index: 1;
+  background: var(--st-color-surface);
+}
+
+.st-step__marker::before {
+  content: counter(steps);
+}
+
+.st-step--active .st-step__marker {
+  background: var(--st-color-accent);
+  border-color: var(--st-color-accent);
+  color: white;
+}
+
+.st-step--completed .st-step__marker {
+  background: var(--st-color-accent);
+  border-color: var(--st-color-accent);
+  color: white;
+}
+
+.st-step--completed .st-step__marker::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.st-step__label {
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-medium);
+  color: var(--st-color-text-secondary);
+  text-align: center;
+}
+
+.st-step--active .st-step__label {
+  color: var(--st-color-accent-text);
+  font-weight: var(--st-font-semibold);
+}
+
+.st-step--completed .st-step__label {
+  color: var(--st-color-text-secondary);
+}
+
+/* ======================================================
+   WORKFLOW TRACKER
+   ====================================================== */
+
+/* --- Component tokens --- */
+.st-workflow {
+  --st-wf-marker-size: 36px;
+  --st-wf-connector-h: 2px;
+  --st-wf-connector-color: var(--st-color-border);
+  --st-wf-connector-complete: var(--st-color-success);
+  --st-wf-connector-active: var(--st-color-accent);
+  --st-wf-connector-blocked: var(--st-color-warning);
+  --st-wf-connector-error: var(--st-color-danger);
+  --st-wf-gap: var(--st-space-2);
+}
+
+/* --- Base layout --- */
+.st-workflow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding: var(--st-space-4) var(--st-space-2);
+  list-style: none;
+  margin: 0;
+}
+
+/* --- Stage --- */
+.st-wf-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 80px;
+  position: relative;
+  gap: var(--st-space-2);
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
+/* Connector line: right half from this stage to next */
+.st-wf-stage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--st-wf-marker-size) / 2);
+  left: calc(50% + calc(var(--st-wf-marker-size) / 2));
+  right: calc(-50% + calc(var(--st-wf-marker-size) / 2));
+  height: var(--st-wf-connector-h);
+  background: var(--st-wf-connector-color);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Complete stage drives its outgoing connector green */
+.st-wf-stage--complete:not(:last-child)::after {
+  background: var(--st-wf-connector-complete);
+}
+
+/* Active stage: accent connector going in (from prev complete) is handled
+   by the prev stage's ::after above; going out stays grey */
+.st-wf-stage--blocked:not(:last-child)::after {
+  background: var(--st-wf-connector-blocked);
+}
+
+.st-wf-stage--error:not(:last-child)::after {
+  background: var(--st-wf-connector-error);
+}
+
+/* Arrowhead at the right end of each connector — indicates flow direction */
+.st-wf-stage:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--st-wf-marker-size) / 2);
+  /* tip sits 2px before the next marker's left edge */
+  right: calc(-50% + var(--st-wf-marker-size) / 2 + 2px);
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 5px solid var(--st-wf-connector-color);
+  z-index: 1;
+}
+
+.st-wf-stage--complete:not(:last-child)::before {
+  border-left-color: var(--st-wf-connector-complete);
+}
+
+.st-wf-stage--blocked:not(:last-child)::before {
+  border-left-color: var(--st-wf-connector-blocked);
+}
+
+.st-wf-stage--error:not(:last-child)::before {
+  border-left-color: var(--st-wf-connector-error);
+}
+
+/* --- Marker --- */
+.st-wf-stage__marker {
+  width: var(--st-wf-marker-size);
+  height: var(--st-wf-marker-size);
+  border-radius: 50%;
+  background: var(--st-color-surface);
+  border: 2px solid var(--st-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+/* Complete */
+.st-wf-stage--complete .st-wf-stage__marker {
+  background: var(--st-color-success);
+  border-color: var(--st-color-success);
+}
+
+.st-wf-stage--complete .st-wf-stage__marker::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Active */
+.st-wf-stage--active .st-wf-stage__marker {
+  background: var(--st-color-accent);
+  border-color: var(--st-color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--st-color-accent) 20%, transparent);
+  animation: st-wf-pulse 2s ease-in-out infinite;
+}
+
+/* Blocked */
+.st-wf-stage--blocked .st-wf-stage__marker {
+  background: var(--st-color-warning);
+  border-color: var(--st-color-warning);
+}
+
+.st-wf-stage--blocked .st-wf-stage__marker::before {
+  content: "!";
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+/* Error */
+.st-wf-stage--error .st-wf-stage__marker {
+  background: var(--st-color-danger);
+  border-color: var(--st-color-danger);
+}
+
+.st-wf-stage--error .st-wf-stage__marker::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 3l6 6M9 3l-6 6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@keyframes st-wf-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--st-color-accent) 25%, transparent); }
+  50%       { box-shadow: 0 0 0 7px color-mix(in srgb, var(--st-color-accent) 10%, transparent); }
+}
+
+/* --- Text elements --- */
+.st-wf-stage__label {
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-medium);
+  color: var(--st-color-text-secondary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.st-wf-stage--active .st-wf-stage__label {
+  color: var(--st-color-accent-text);
+  font-weight: var(--st-font-semibold);
+}
+
+.st-wf-stage--complete .st-wf-stage__label {
+  color: var(--st-color-text-secondary);
+}
+
+.st-wf-stage--blocked .st-wf-stage__label {
+  color: var(--st-color-warning);
+  font-weight: var(--st-font-semibold);
+}
+
+.st-wf-stage--error .st-wf-stage__label {
+  color: var(--st-color-danger);
+  font-weight: var(--st-font-semibold);
+}
+
+.st-wf-stage__meta {
+  font-size: var(--st-text-xs);
+  color: var(--st-color-text-tertiary);
+  text-align: center;
+}
+
+.st-wf-stage__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: var(--st-font-semibold);
+  background: var(--st-color-bg-subtle);
+  color: var(--st-color-text-tertiary);
+  border: 1px solid var(--st-color-border);
+}
+
+/* --- Drillable stage (anchor) --- */
+.st-wf-stage--has-sub {
+  cursor: pointer;
+}
+
+.st-wf-stage--has-sub:hover .st-wf-stage__marker {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--st-color-accent) 15%, transparent);
+}
+
+.st-wf-stage--has-sub:focus-visible {
+  outline: none;
+}
+
+.st-wf-stage--has-sub:focus-visible .st-wf-stage__marker {
+  outline: 3px solid var(--st-color-accent);
+  outline-offset: 3px;
+}
+
+/* + badge on the marker corner — shows the stage is drillable */
+.st-wf-stage--has-sub .st-wf-stage__marker {
+  overflow: visible;
+}
+
+.st-wf-stage--has-sub .st-wf-stage__marker::after {
+  content: "+";
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--st-color-surface);
+  border: 1.5px solid var(--st-color-accent);
+  color: var(--st-color-accent);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 13px;
+  text-align: center;
+  z-index: 3;
+  transition: background 0.15s, color 0.15s;
+}
+
+.st-wf-stage--has-sub:hover .st-wf-stage__marker::after {
+  background: var(--st-color-accent);
+  color: white;
+}
+
+/* --- Panel container & drill-down --- */
+.st-wf-container {
+  position: relative;
+}
+
+.st-wf-panel {
+  display: none;
+}
+
+/* Root panel shown by default */
+.st-wf-panel:first-child {
+  display: block;
+}
+
+/* Targeted sub-panel is shown */
+.st-wf-panel:target {
+  display: block;
+}
+
+/* When a sub-panel is targeted, hide root */
+.st-wf-container:has(.st-wf-panel:not(:first-child):target) .st-wf-panel:first-child {
+  display: none;
+}
+
+/* --- Breadcrumb --- */
+.st-wf-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-1);
+  padding: var(--st-space-2) var(--st-space-2) 0;
+  margin-bottom: var(--st-space-1);
+}
+
+.st-wf-breadcrumb__link {
+  font-size: var(--st-text-sm);
+  color: var(--st-color-accent);
+  text-decoration: none;
+  font-weight: var(--st-font-medium);
+}
+
+.st-wf-breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+.st-wf-breadcrumb__sep {
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-tertiary);
+}
+
+.st-wf-breadcrumb__current {
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-primary);
+  font-weight: var(--st-font-semibold);
+}
+
+/* --- Parallel group --- */
+.st-wf-parallel {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-self: flex-start;
+  gap: 3px;
+  padding: var(--st-space-2) var(--st-space-3);
+  /* push the block down so its top edge sits at the connector-line height */
+  margin: calc(var(--st-wf-marker-size) / 2 - var(--st-space-2)) var(--st-space-3) 0;
+  background: color-mix(in srgb, var(--st-color-accent) 5%, var(--st-color-surface));
+  border: 1px solid color-mix(in srgb, var(--st-color-accent) 20%, var(--st-color-border));
+  border-left: 3px solid var(--st-color-accent);
+  border-radius: var(--st-radius-lg);
+  /* Raise above the incoming connector line so the block background
+     covers the segment that would otherwise bleed through the header */
+  position: relative;
+  z-index: 1;
+  /* Smaller markers inside the parallel card */
+  --st-wf-marker-size: 26px;
+}
+
+/* "Parallel" header label */
+.st-wf-parallel__header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: var(--st-font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--st-color-accent);
+  padding-bottom: var(--st-space-1);
+  margin-bottom: 2px;
+  border-bottom: 1px solid color-mix(in srgb, var(--st-color-accent) 15%, var(--st-color-border));
+}
+
+.st-wf-parallel__header svg {
+  flex-shrink: 0;
+}
+
+/* Branch row */
+.st-wf-parallel__branch {
+  display: flex;
+  align-items: center;
+}
+
+/* Branch stage: compact horizontal layout (marker | label) */
+.st-wf-parallel__branch .st-wf-stage {
+  flex: none;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--st-space-2);
+  min-width: auto;
+  padding: 2px 0;
+}
+
+.st-wf-parallel__branch .st-wf-stage__label {
+  text-align: left;
+  white-space: nowrap;
+  font-size: var(--st-text-xs);
+}
+
+/* No connectors or arrowheads within parallel branches */
+.st-wf-parallel__branch .st-wf-stage::before,
+.st-wf-parallel__branch .st-wf-stage::after {
+  display: none;
+}
+
+/* --- Vertical variant --- */
+.st-workflow--vertical {
+  flex-direction: column;
+  overflow-x: visible;
+  overflow-y: auto;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.st-workflow--vertical .st-wf-stage {
+  flex-direction: row;
+  flex: none;
+  width: 100%;
+  align-items: flex-start;
+  min-width: auto;
+  padding: var(--st-space-2) 0;
+  gap: var(--st-space-3);
+}
+
+/* No horizontal arrowhead in vertical mode */
+.st-workflow--vertical .st-wf-stage:not(:last-child)::before {
+  display: none;
+}
+
+/* Vertical connector: down the left side */
+.st-workflow--vertical .st-wf-stage:not(:last-child)::after {
+  top: calc(var(--st-wf-marker-size) + 4px);
+  left: calc(var(--st-wf-marker-size) / 2);
+  right: auto;
+  width: 2px;
+  height: calc(100% - var(--st-wf-marker-size) - 4px + var(--st-space-2));
+  transform: none;
+}
+
+.st-workflow--vertical .st-wf-stage__label,
+.st-workflow--vertical .st-wf-stage__meta {
+  text-align: left;
+}
+
+/* --- Compact variant --- */
+.st-workflow--compact {
+  --st-wf-marker-size: 24px;
+}
+
+.st-workflow--compact .st-wf-stage__meta {
+  display: none;
+}
+
+.st-workflow--compact .st-wf-stage__label {
+  font-size: 10px;
+}
+
+.st-workflow--compact .st-wf-stage--complete .st-wf-stage__marker::before,
+.st-workflow--compact .st-wf-stage--error .st-wf-stage__marker::before {
+  width: 12px;
+  height: 12px;
+}
+
+.st-workflow--compact .st-wf-stage--blocked .st-wf-stage__marker::before {
+  font-size: 11px;
+}
+
+/* --- Responsive: stack to vertical on small screens --- */
+@media (max-width: 600px) {
+  .st-workflow:not(.st-workflow--vertical) {
+    flex-direction: column;
+    overflow-x: visible;
+    align-items: flex-start;
+  }
+
+  .st-workflow:not(.st-workflow--vertical) .st-wf-stage {
+    flex-direction: row;
+    flex: none;
+    width: 100%;
+    align-items: flex-start;
+    min-width: auto;
+    padding: var(--st-space-2) 0;
+    gap: var(--st-space-3);
+  }
+
+  .st-workflow:not(.st-workflow--vertical) .st-wf-stage:not(:last-child)::before {
+    display: none; /* no horizontal arrowhead when stacked vertically */
+  }
+
+  .st-workflow:not(.st-workflow--vertical) .st-wf-stage:not(:last-child)::after {
+    top: calc(var(--st-wf-marker-size) + 4px);
+    left: calc(var(--st-wf-marker-size) / 2);
+    right: auto;
+    width: 2px;
+    height: calc(100% - var(--st-wf-marker-size));
+    transform: none;
+  }
+
+  .st-workflow:not(.st-workflow--vertical) .st-wf-stage__label,
+  .st-workflow:not(.st-workflow--vertical) .st-wf-stage__meta {
+    text-align: left;
+  }
+}

@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Sitara — Insurance Theme
+   Stable, protective, warm. Deep teal + amber. Think Aetna, Allstate, LIC.
+   Usage: <html data-theme="insurance"> or any ancestor element.
+   ========================================================================== */
+
+[data-theme="insurance"] {
+  /* Primary palette — deep forest teal */
+  --st-primary-50:  #F0FDF6;
+  --st-primary-100: #DCFCE9;
+  --st-primary-200: #BBF7D4;
+  --st-primary-300: #86EFAC;
+  --st-primary-400: #4ADE80;
+  --st-primary-500: #22C55E;
+  --st-primary-600: #16A34A;
+  --st-primary-700: #15803D;
+  --st-primary-800: #065F46;
+  --st-primary-900: #064E3B;
+
+  /* Secondary — warm amber */
+  --st-secondary-300: #FCD34D;
+  --st-secondary-400: #FBBF24;
+  --st-secondary-500: #F59E0B;
+  --st-secondary-600: #D97706;
+  --st-secondary-700: #B45309;
+
+  /* Semantic overrides */
+  --st-color-accent:        #065F46;
+  --st-color-accent-hover:  #064E3B;
+  --st-color-accent-active: #042F29;
+  --st-color-accent-subtle: var(--st-primary-50);
+  --st-color-accent-muted:  var(--st-primary-100);
+  --st-color-accent-border: var(--st-primary-200);
+  --st-color-accent-text:   var(--st-primary-800);
+  --st-color-accent-on:     #FFFFFF;
+
+  /* Amber secondary accent */
+  --st-color-amber:          var(--st-secondary-500);
+  --st-color-amber-hover:    var(--st-secondary-600);
+  --st-color-amber-subtle:   #FFFBEB;
+  --st-color-amber-text:     var(--st-secondary-700);
+  --st-color-amber-on:       #FFFFFF;
+
+  /* Surfaces — warm white */
+  --st-color-bg:             #F6FBF7;
+  --st-color-bg-subtle:      #ECF5ED;
+  --st-color-surface:        #FFFFFF;
+  --st-color-surface-raised: #FFFFFF;
+  --st-color-surface-sunken: #F0FAF1;
+
+  /* Text — warm dark */
+  --st-color-text:           #0C1F14;
+  --st-color-text-secondary: #2D5038;
+  --st-color-text-tertiary:  #7A9A80;
+  --st-color-text-disabled:  #B8D4BC;
+  --st-color-text-link:      #065F46;
+  --st-color-text-link-hover: #064E3B;
+
+  /* Borders — warm green-gray */
+  --st-color-border:        #C8E0CB;
+  --st-color-border-strong: #A8CAB0;
+  --st-color-border-subtle: #E0F0E3;
+  --st-color-border-accent: var(--st-primary-600);
+
+  /* Banner — deep teal */
+  --st-banner-bg:             #065F46;
+  --st-banner-border:         #064E3B;
+  --st-banner-text:           #FFFFFF;
+  --st-banner-text-secondary: rgba(255,255,255,0.7);
+
+  /* Sidebar */
+  --st-sidebar-bg:           #FFFFFF;
+  --st-sidebar-border:       #C8E0CB;
+  --st-sidebar-text:         #2D5038;
+  --st-sidebar-text-active:  #065F46;
+  --st-sidebar-bg-active:    var(--st-primary-50);
+  --st-sidebar-bg-hover:     #F0FAF1;
+  --st-sidebar-icon:         #7A9A80;
+  --st-sidebar-icon-active:  #065F46;
+
+  /* Button radius — slightly rounded, friendly but professional */
+  --st-btn-radius: var(--st-radius-md);
+
+  /* Input radius */
+  --st-input-radius: var(--st-radius-md);
+
+  /* Card */
+  --st-card-radius:  var(--st-radius-xl);
+  --st-card-shadow:  0 1px 4px 0 rgb(6 95 70 / 0.08), 0 1px 2px -1px rgb(6 95 70 / 0.05);
+  --st-card-border:  #C8E0CB;
+}
+
+/* Insurance dark mode */
+[data-theme="insurance"][data-color-scheme="dark"],
+[data-theme="insurance"].st-dark {
+  --st-color-bg:             #040F08;
+  --st-color-bg-subtle:      #091610;
+  --st-color-surface:        #0C1F14;
+  --st-color-surface-raised: #12281A;
+  --st-color-surface-sunken: #040F08;
+
+  --st-color-text:           #EEF7F0;
+  --st-color-text-secondary: #7BA888;
+  --st-color-text-tertiary:  #3D6348;
+  --st-color-text-disabled:  #1E3826;
+
+  --st-color-border:        #163323;
+  --st-color-border-strong: #1F4530;
+  --st-color-border-subtle: #0C1F14;
+
+  --st-color-accent:        var(--st-primary-500);
+  --st-color-accent-hover:  var(--st-primary-400);
+  --st-color-accent-subtle: rgba(34, 197, 94, 0.10);
+  --st-color-accent-muted:  rgba(34, 197, 94, 0.18);
+  --st-color-accent-text:   var(--st-primary-400);
+
+  --st-banner-bg:            #042F29;
+  --st-sidebar-bg:           #091610;
+  --st-sidebar-border:       #163323;
+  --st-sidebar-text:         rgba(255,255,255,0.6);
+  --st-sidebar-text-active:  #FFFFFF;
+  --st-sidebar-bg-active:    rgba(34, 197, 94, 0.12);
+  --st-sidebar-bg-hover:     rgba(255,255,255,0.04);
+  --st-sidebar-icon:         rgba(255,255,255,0.35);
+  --st-sidebar-icon-active:  var(--st-primary-500);
+}

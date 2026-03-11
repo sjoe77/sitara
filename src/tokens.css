@@ -1,0 +1,326 @@
+/* ==========================================================================
+   Sitara Design System — Design Tokens
+   CSS custom properties that power all components and themes.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* -------------------------------------------------------------------------
+     Color Palette — Raw scales (referenced by semantic tokens)
+     ------------------------------------------------------------------------- */
+
+  /* Primary (Indigo — default corporate) */
+  --st-primary-50:  #EEF2FF;
+  --st-primary-100: #E0E7FF;
+  --st-primary-200: #C7D2FE;
+  --st-primary-300: #A5B4FC;
+  --st-primary-400: #818CF8;
+  --st-primary-500: #6366F1;
+  --st-primary-600: #4F46E5;
+  --st-primary-700: #4338CA;
+  --st-primary-800: #3730A3;
+  --st-primary-900: #312E81;
+
+  /* Neutral (Slate) */
+  --st-neutral-0:   #FFFFFF;
+  --st-neutral-50:  #F8FAFC;
+  --st-neutral-100: #F1F5F9;
+  --st-neutral-200: #E2E8F0;
+  --st-neutral-300: #CBD5E1;
+  --st-neutral-400: #94A3B8;
+  --st-neutral-500: #64748B;
+  --st-neutral-600: #475569;
+  --st-neutral-700: #334155;
+  --st-neutral-800: #1E293B;
+  --st-neutral-900: #0F172A;
+
+  /* Status — Success */
+  --st-success-50:  #ECFDF5;
+  --st-success-500: #10B981;
+  --st-success-700: #047857;
+  --st-success-900: #064E3B;
+
+  /* Status — Warning */
+  --st-warning-50:  #FFFBEB;
+  --st-warning-500: #F59E0B;
+  --st-warning-700: #B45309;
+  --st-warning-900: #78350F;
+
+  /* Status — Danger */
+  --st-danger-50:  #FEF2F2;
+  --st-danger-500: #EF4444;
+  --st-danger-700: #B91C1C;
+  --st-danger-900: #7F1D1D;
+
+  /* Status — Info */
+  --st-info-50:  #EFF6FF;
+  --st-info-500: #3B82F6;
+  --st-info-700: #1D4ED8;
+  --st-info-900: #1E3A8A;
+
+  /* -------------------------------------------------------------------------
+     Semantic Color Tokens — Components reference these, never raw colors
+     ------------------------------------------------------------------------- */
+
+  /* Brand/Accent */
+  --st-color-accent:         var(--st-primary-600);
+  --st-color-accent-hover:   var(--st-primary-700);
+  --st-color-accent-active:  var(--st-primary-800);
+  --st-color-accent-subtle:  var(--st-primary-50);
+  --st-color-accent-muted:   var(--st-primary-100);
+  --st-color-accent-border:  var(--st-primary-200);
+  --st-color-accent-text:    var(--st-primary-700);
+  --st-color-accent-on:      #FFFFFF;
+
+  /* Surfaces */
+  --st-color-bg:             var(--st-neutral-50);
+  --st-color-bg-subtle:      var(--st-neutral-100);
+  --st-color-surface:        var(--st-neutral-0);
+  --st-color-surface-raised: var(--st-neutral-0);
+  --st-color-surface-sunken: var(--st-neutral-50);
+  --st-color-overlay:        rgb(15 23 42 / 0.4);
+
+  /* Text */
+  --st-color-text:           var(--st-neutral-900);
+  --st-color-text-secondary: var(--st-neutral-600);
+  --st-color-text-tertiary:  var(--st-neutral-400);
+  --st-color-text-disabled:  var(--st-neutral-300);
+  --st-color-text-inverse:   var(--st-neutral-0);
+  --st-color-text-on-accent: #FFFFFF;
+  --st-color-text-link:      var(--st-primary-600);
+  --st-color-text-link-hover: var(--st-primary-800);
+
+  /* Borders */
+  --st-color-border:         var(--st-neutral-200);
+  --st-color-border-strong:  var(--st-neutral-300);
+  --st-color-border-subtle:  var(--st-neutral-100);
+  --st-color-border-accent:  var(--st-primary-500);
+
+  /* Status — Semantic */
+  --st-color-success:        var(--st-success-500);
+  --st-color-success-subtle: var(--st-success-50);
+  --st-color-success-text:   var(--st-success-700);
+  --st-color-success-border: #6EE7B7;
+
+  --st-color-warning:        var(--st-warning-500);
+  --st-color-warning-subtle: var(--st-warning-50);
+  --st-color-warning-text:   var(--st-warning-700);
+  --st-color-warning-border: #FCD34D;
+
+  --st-color-danger:         var(--st-danger-500);
+  --st-color-danger-subtle:  var(--st-danger-50);
+  --st-color-danger-text:    var(--st-danger-700);
+  --st-color-danger-border:  #FCA5A5;
+  --st-color-danger-hover:   var(--st-danger-700);
+  --st-color-danger-active:  #991B1B;
+
+  --st-color-info:           var(--st-info-500);
+  --st-color-info-subtle:    var(--st-info-50);
+  --st-color-info-text:      var(--st-info-700);
+  --st-color-info-border:    #93C5FD;
+
+  /* -------------------------------------------------------------------------
+     Typography
+     ------------------------------------------------------------------------- */
+
+  --st-font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+                  "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --st-font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono",
+                  "Menlo", monospace;
+  --st-font-serif: "Georgia", "Times New Roman", serif;
+
+  /* Font sizes (fluid-friendly rem scale) */
+  --st-text-2xs: 0.625rem;   /*  10px */
+  --st-text-xs:  0.75rem;    /*  12px */
+  --st-text-sm:  0.875rem;   /*  14px */
+  --st-text-md:  1rem;       /*  16px */
+  --st-text-lg:  1.125rem;   /*  18px */
+  --st-text-xl:  1.25rem;    /*  20px */
+  --st-text-2xl: 1.5rem;     /*  24px */
+  --st-text-3xl: 1.875rem;   /*  30px */
+  --st-text-4xl: 2.25rem;    /*  36px */
+  --st-text-5xl: 3rem;       /*  48px */
+
+  /* Font weights */
+  --st-font-normal:   400;
+  --st-font-medium:   500;
+  --st-font-semibold: 600;
+  --st-font-bold:     700;
+
+  /* Line heights */
+  --st-leading-none:    1;
+  --st-leading-tight:   1.25;
+  --st-leading-snug:    1.375;
+  --st-leading-normal:  1.5;
+  --st-leading-relaxed: 1.625;
+  --st-leading-loose:   2;
+
+  /* Letter spacing */
+  --st-tracking-tight:  -0.025em;
+  --st-tracking-normal:  0em;
+  --st-tracking-wide:    0.025em;
+  --st-tracking-wider:   0.05em;
+  --st-tracking-widest:  0.1em;
+
+  /* -------------------------------------------------------------------------
+     Spacing (4px base unit)
+     ------------------------------------------------------------------------- */
+
+  --st-space-px:  1px;
+  --st-space-0:   0;
+  --st-space-0\.5: 0.125rem;  /*  2px */
+  --st-space-1:   0.25rem;    /*  4px */
+  --st-space-1\.5: 0.375rem;  /*  6px */
+  --st-space-2:   0.5rem;     /*  8px */
+  --st-space-2\.5: 0.625rem;  /* 10px */
+  --st-space-3:   0.75rem;    /* 12px */
+  --st-space-3\.5: 0.875rem;  /* 14px */
+  --st-space-4:   1rem;       /* 16px */
+  --st-space-5:   1.25rem;    /* 20px */
+  --st-space-6:   1.5rem;     /* 24px */
+  --st-space-7:   1.75rem;    /* 28px */
+  --st-space-8:   2rem;       /* 32px */
+  --st-space-9:   2.25rem;    /* 36px */
+  --st-space-10:  2.5rem;     /* 40px */
+  --st-space-12:  3rem;       /* 48px */
+  --st-space-14:  3.5rem;     /* 56px */
+  --st-space-16:  4rem;       /* 64px */
+  --st-space-20:  5rem;       /* 80px */
+  --st-space-24:  6rem;       /* 96px */
+  --st-space-32:  8rem;       /* 128px */
+
+  /* -------------------------------------------------------------------------
+     Border Radius
+     ------------------------------------------------------------------------- */
+
+  --st-radius-none: 0;
+  --st-radius-sm:   0.25rem;  /*  4px */
+  --st-radius-md:   0.375rem; /*  6px */
+  --st-radius-lg:   0.5rem;   /*  8px */
+  --st-radius-xl:   0.75rem;  /* 12px */
+  --st-radius-2xl:  1rem;     /* 16px */
+  --st-radius-3xl:  1.5rem;   /* 24px */
+  --st-radius-full: 9999px;
+
+  /* -------------------------------------------------------------------------
+     Shadows
+     ------------------------------------------------------------------------- */
+
+  --st-shadow-none: none;
+  --st-shadow-xs:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --st-shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --st-shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --st-shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --st-shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+  --st-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.2);
+  --st-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.06);
+
+  /* Focus ring */
+  --st-focus-ring: 0 0 0 3px var(--st-color-accent-muted);
+  --st-focus-ring-danger: 0 0 0 3px var(--st-danger-50);
+
+  /* -------------------------------------------------------------------------
+     Transitions
+     ------------------------------------------------------------------------- */
+
+  --st-duration-instant:  0ms;
+  --st-duration-fast:     100ms;
+  --st-duration-base:     150ms;
+  --st-duration-slow:     250ms;
+  --st-duration-slower:   350ms;
+  --st-ease-out:          cubic-bezier(0, 0, 0.2, 1);
+  --st-ease-in:           cubic-bezier(0.4, 0, 1, 1);
+  --st-ease-in-out:       cubic-bezier(0.4, 0, 0.2, 1);
+
+  --st-transition-fast:   var(--st-duration-fast) var(--st-ease-out);
+  --st-transition-base:   var(--st-duration-base) var(--st-ease-out);
+  --st-transition-slow:   var(--st-duration-slow) var(--st-ease-out);
+
+  /* -------------------------------------------------------------------------
+     Z-Index Scale
+     ------------------------------------------------------------------------- */
+
+  --st-z-base:     0;
+  --st-z-raised:   1;
+  --st-z-dropdown: 100;
+  --st-z-sticky:   200;
+  --st-z-banner:   300;
+  --st-z-overlay:  400;
+  --st-z-modal:    500;
+  --st-z-toast:    600;
+
+  /* -------------------------------------------------------------------------
+     Layout — App Shell
+     ------------------------------------------------------------------------- */
+
+  --st-banner-height:           64px;
+  --st-sidebar-width:           260px;
+  --st-sidebar-collapsed-width: 64px;
+  --st-content-max-width:       1280px;
+
+  /* -------------------------------------------------------------------------
+     Component Tokens — Buttons
+     ------------------------------------------------------------------------- */
+
+  --st-btn-radius:        var(--st-radius-md);
+  --st-btn-font-weight:   var(--st-font-semibold);
+  --st-btn-transition:    all var(--st-transition-base);
+
+  --st-btn-sm-height:     32px;
+  --st-btn-sm-px:         var(--st-space-3);
+  --st-btn-sm-font:       var(--st-text-sm);
+
+  --st-btn-md-height:     40px;
+  --st-btn-md-px:         var(--st-space-4);
+  --st-btn-md-font:       var(--st-text-sm);
+
+  --st-btn-lg-height:     48px;
+  --st-btn-lg-px:         var(--st-space-5);
+  --st-btn-lg-font:       var(--st-text-md);
+
+  /* -------------------------------------------------------------------------
+     Component Tokens — Form Inputs
+     ------------------------------------------------------------------------- */
+
+  --st-input-radius:       var(--st-radius-md);
+  --st-input-height:       40px;
+  --st-input-px:           var(--st-space-3);
+  --st-input-font:         var(--st-text-sm);
+  --st-input-bg:           var(--st-color-surface);
+  --st-input-border:       var(--st-color-border-strong);
+  --st-input-border-focus: var(--st-color-accent);
+  --st-input-color:        var(--st-color-text);
+  --st-input-placeholder:  var(--st-color-text-tertiary);
+
+  /* -------------------------------------------------------------------------
+     Component Tokens — Cards
+     ------------------------------------------------------------------------- */
+
+  --st-card-radius:   var(--st-radius-xl);
+  --st-card-padding:  var(--st-space-6);
+  --st-card-shadow:   var(--st-shadow-sm);
+  --st-card-border:   var(--st-color-border);
+
+  /* -------------------------------------------------------------------------
+     Component Tokens — Banner
+     ------------------------------------------------------------------------- */
+
+  --st-banner-bg:           var(--st-color-surface);
+  --st-banner-border:       var(--st-color-border);
+  --st-banner-text:         var(--st-color-text);
+  --st-banner-text-secondary: var(--st-color-text-secondary);
+
+  /* -------------------------------------------------------------------------
+     Component Tokens — Sidebar
+     ------------------------------------------------------------------------- */
+
+  --st-sidebar-bg:            var(--st-color-surface);
+  --st-sidebar-border:        var(--st-color-border);
+  --st-sidebar-text:          var(--st-color-text-secondary);
+  --st-sidebar-text-active:   var(--st-color-accent);
+  --st-sidebar-bg-active:     var(--st-color-accent-subtle);
+  --st-sidebar-bg-hover:      var(--st-color-bg-subtle);
+  --st-sidebar-icon:          var(--st-color-text-tertiary);
+  --st-sidebar-icon-active:   var(--st-color-accent);
+}

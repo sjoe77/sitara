@@ -1,0 +1,359 @@
+/* ==========================================================================
+   Sitara — Layout Components
+   Grid, Container, Stack, Cluster, Divider, Spacer
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Container
+   ------------------------------------------------------------------------- */
+
+.st-container {
+  width: 100%;
+  max-width: var(--st-content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--st-space-6);
+}
+
+.st-container--sm  { max-width: 640px;  }
+.st-container--md  { max-width: 768px;  }
+.st-container--lg  { max-width: 1024px; }
+.st-container--xl  { max-width: 1280px; }
+.st-container--2xl { max-width: 1536px; }
+.st-container--fluid { max-width: none; }
+
+@media (max-width: 640px) {
+  .st-container {
+    padding-inline: var(--st-space-4);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Grid — 12-column responsive grid
+   ------------------------------------------------------------------------- */
+
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--st-space-6);
+}
+
+/* Gap modifiers */
+.st-grid--gap-0  { gap: 0; }
+.st-grid--gap-2  { gap: var(--st-space-2); }
+.st-grid--gap-4  { gap: var(--st-space-4); }
+.st-grid--gap-8  { gap: var(--st-space-8); }
+
+/* Row gap only */
+.st-grid--row-gap-0 { row-gap: 0; }
+.st-grid--row-gap-4 { row-gap: var(--st-space-4); }
+.st-grid--row-gap-8 { row-gap: var(--st-space-8); }
+
+/* Column spans */
+.st-col-1  { grid-column: span 1;  }
+.st-col-2  { grid-column: span 2;  }
+.st-col-3  { grid-column: span 3;  }
+.st-col-4  { grid-column: span 4;  }
+.st-col-5  { grid-column: span 5;  }
+.st-col-6  { grid-column: span 6;  }
+.st-col-7  { grid-column: span 7;  }
+.st-col-8  { grid-column: span 8;  }
+.st-col-9  { grid-column: span 9;  }
+.st-col-10 { grid-column: span 10; }
+.st-col-11 { grid-column: span 11; }
+.st-col-12 { grid-column: span 12; }
+.st-col-auto { grid-column: auto; }
+
+/* Column starts */
+.st-col-start-1  { grid-column-start: 1;  }
+.st-col-start-2  { grid-column-start: 2;  }
+.st-col-start-3  { grid-column-start: 3;  }
+.st-col-start-4  { grid-column-start: 4;  }
+.st-col-start-5  { grid-column-start: 5;  }
+.st-col-start-6  { grid-column-start: 6;  }
+.st-col-start-7  { grid-column-start: 7;  }
+.st-col-start-8  { grid-column-start: 8;  }
+.st-col-start-9  { grid-column-start: 9;  }
+
+/* Row spans */
+.st-row-1 { grid-row: span 1; }
+.st-row-2 { grid-row: span 2; }
+.st-row-3 { grid-row: span 3; }
+
+/* Responsive breakpoints — tablet (md: 768px) */
+@media (max-width: 768px) {
+  .st-col-md-1  { grid-column: span 1;  }
+  .st-col-md-2  { grid-column: span 2;  }
+  .st-col-md-3  { grid-column: span 3;  }
+  .st-col-md-4  { grid-column: span 4;  }
+  .st-col-md-6  { grid-column: span 6;  }
+  .st-col-md-12 { grid-column: span 12; }
+}
+
+/* Responsive breakpoints — mobile (sm: 640px) */
+@media (max-width: 640px) {
+  .st-col-sm-12 { grid-column: span 12; }
+  .st-col-sm-6  { grid-column: span 6;  }
+
+  .st-grid--stack-sm {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Flex utilities — Stack (vertical) and Cluster (horizontal)
+   ------------------------------------------------------------------------- */
+
+.st-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.st-stack--1  { gap: var(--st-space-1); }
+.st-stack--2  { gap: var(--st-space-2); }
+.st-stack--3  { gap: var(--st-space-3); }
+.st-stack--4  { gap: var(--st-space-4); }
+.st-stack--5  { gap: var(--st-space-5); }
+.st-stack--6  { gap: var(--st-space-6); }
+.st-stack--8  { gap: var(--st-space-8); }
+.st-stack--10 { gap: var(--st-space-10); }
+.st-stack--12 { gap: var(--st-space-12); }
+
+.st-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.st-cluster--1  { gap: var(--st-space-1); }
+.st-cluster--2  { gap: var(--st-space-2); }
+.st-cluster--3  { gap: var(--st-space-3); }
+.st-cluster--4  { gap: var(--st-space-4); }
+.st-cluster--5  { gap: var(--st-space-5); }
+.st-cluster--6  { gap: var(--st-space-6); }
+.st-cluster--8  { gap: var(--st-space-8); }
+
+.st-cluster--start   { justify-content: flex-start; }
+.st-cluster--center  { justify-content: center; }
+.st-cluster--end     { justify-content: flex-end; }
+.st-cluster--between { justify-content: space-between; }
+
+/* -------------------------------------------------------------------------
+   Divider
+   ------------------------------------------------------------------------- */
+
+.st-divider {
+  border: none;
+  border-top: 1px solid var(--st-color-border);
+  margin-block: var(--st-space-6);
+}
+
+.st-divider--subtle {
+  border-color: var(--st-color-border-subtle);
+}
+
+.st-divider--strong {
+  border-color: var(--st-color-border-strong);
+}
+
+/* Vertical divider */
+.st-divider--vertical {
+  border-top: none;
+  border-left: 1px solid var(--st-color-border);
+  height: auto;
+  align-self: stretch;
+  margin-block: 0;
+  margin-inline: var(--st-space-4);
+}
+
+/* Divider with text */
+.st-divider--label {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-3);
+  margin-block: var(--st-space-6);
+  color: var(--st-color-text-tertiary);
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--st-tracking-wider);
+}
+
+.st-divider--label::before,
+.st-divider--label::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--st-color-border);
+}
+
+/* -------------------------------------------------------------------------
+   Section
+   ------------------------------------------------------------------------- */
+
+.st-section {
+  padding-block: var(--st-space-12);
+}
+
+.st-section--sm {
+  padding-block: var(--st-space-8);
+}
+
+.st-section--lg {
+  padding-block: var(--st-space-20);
+}
+
+/* -------------------------------------------------------------------------
+   App Shell Layout
+   ------------------------------------------------------------------------- */
+
+.st-app {
+  display: grid;
+  grid-template-rows: var(--st-banner-height) 1fr;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "banner banner"
+    "sidebar main";
+  min-height: 100vh;
+}
+
+.st-app--no-sidebar {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "banner"
+    "main";
+}
+
+.st-app__main {
+  grid-area: main;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Content area
+   ------------------------------------------------------------------------- */
+
+.st-content {
+  padding: var(--st-space-8) var(--st-space-6);
+  max-width: var(--st-content-max-width);
+  margin-inline: auto;
+}
+
+.st-content--flush {
+  padding: 0;
+}
+
+.st-content--narrow {
+  max-width: 720px;
+}
+
+/* -------------------------------------------------------------------------
+   Page Header
+   ------------------------------------------------------------------------- */
+
+.st-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--st-space-4);
+  margin-bottom: var(--st-space-6);
+  flex-wrap: wrap;
+}
+
+.st-page-header__title {
+  font-size: var(--st-text-2xl);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+  margin: 0;
+  line-height: var(--st-leading-tight);
+}
+
+.st-page-header__subtitle {
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+  margin: var(--st-space-1) 0 0;
+  line-height: var(--st-leading-normal);
+}
+
+.st-page-header__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-2);
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+  margin-bottom: var(--st-space-1);
+}
+
+.st-page-header__breadcrumb a {
+  color: var(--st-color-text-secondary);
+  text-decoration: none;
+  transition: color var(--st-transition-fast);
+}
+
+.st-page-header__breadcrumb a:hover {
+  color: var(--st-color-text);
+}
+
+.st-page-header__breadcrumb-sep {
+  color: var(--st-color-text-tertiary);
+}
+
+.st-page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-3);
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Empty State
+   ------------------------------------------------------------------------- */
+
+.st-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--st-space-16) var(--st-space-8);
+  gap: var(--st-space-4);
+}
+
+.st-empty__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--st-color-text-tertiary);
+}
+
+.st-empty__title {
+  font-size: var(--st-text-lg);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+  margin: 0;
+}
+
+.st-empty__description {
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+  max-width: 360px;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive utilities
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .st-hide-md { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .st-hide-sm { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .st-show-md { display: none !important; }
+}
+
+@media (min-width: 641px) {
+  .st-show-sm { display: none !important; }
+}

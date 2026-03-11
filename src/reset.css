@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Sitara Design System — Modern CSS Reset
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+}
+
+body {
+  margin: 0;
+  font-family: var(--st-font-sans);
+  font-size: var(--st-text-md);
+  line-height: var(--st-leading-normal);
+  color: var(--st-color-text);
+  background-color: var(--st-color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--st-font-semibold);
+  line-height: var(--st-leading-tight);
+  color: var(--st-color-text);
+}
+
+h1 { font-size: var(--st-text-4xl); letter-spacing: var(--st-tracking-tight); }
+h2 { font-size: var(--st-text-3xl); letter-spacing: var(--st-tracking-tight); }
+h3 { font-size: var(--st-text-2xl); }
+h4 { font-size: var(--st-text-xl); }
+h5 { font-size: var(--st-text-lg); }
+h6 { font-size: var(--st-text-md); }
+
+p {
+  margin-block: 0 var(--st-space-4);
+  color: var(--st-color-text-secondary);
+  line-height: var(--st-leading-relaxed);
+}
+
+a {
+  color: var(--st-color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--st-transition-fast);
+}
+
+a:hover {
+  color: var(--st-color-text-link-hover);
+}
+
+/* Remove default list styles when used as nav */
+ul[role="list"], ol[role="list"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Avoid text overflows */
+p, li, h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+}
+
+/* Focus styles — only show on keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--st-color-accent);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Remove focus ring for mouse users on buttons/links */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Visually hidden but accessible */
+.st-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip navigation link */
+.st-skip-nav {
+  position: absolute;
+  top: -9999px;
+  left: var(--st-space-4);
+  z-index: var(--st-z-toast);
+  padding: var(--st-space-2) var(--st-space-4);
+  background: var(--st-color-accent);
+  color: var(--st-color-text-on-accent);
+  border-radius: var(--st-radius-md);
+  font-weight: var(--st-font-semibold);
+  text-decoration: none;
+}
+
+.st-skip-nav:focus {
+  top: var(--st-space-4);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--st-color-accent-muted);
+  color: var(--st-color-accent-text);
+}
+
+/* Scrollbar styling (WebKit) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--st-color-bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--st-color-border-strong);
+  border-radius: var(--st-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--st-neutral-400);
+}
+
+/* Code elements */
+code, kbd, samp, pre {
+  font-family: var(--st-font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  background: var(--st-color-bg-subtle);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-sm);
+  padding: 0.125em 0.375em;
+  color: var(--st-color-accent-text);
+}
+
+pre {
+  background: var(--st-neutral-900);
+  color: var(--st-neutral-100);
+  padding: var(--st-space-4);
+  border-radius: var(--st-radius-lg);
+  overflow-x: auto;
+  margin: 0;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: var(--st-text-sm);
+}
+
+/* HR */
+hr {
+  border: none;
+  border-top: 1px solid var(--st-color-border);
+  margin-block: var(--st-space-6);
+}
+
+/* Table resets */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Figure / media */
+figure {
+  margin: 0;
+}
+
+/* Fieldset */
+fieldset {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-lg);
+  padding: var(--st-space-4);
+  margin: 0;
+}
+
+legend {
+  padding-inline: var(--st-space-2);
+  font-weight: var(--st-font-medium);
+  font-size: var(--st-text-sm);
+  color: var(--st-color-text-secondary);
+}
+
+/* Dialog */
+dialog {
+  background: var(--st-color-surface);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-radius-2xl);
+  padding: var(--st-space-6);
+  box-shadow: var(--st-shadow-xl);
+  max-width: min(90vw, 560px);
+}
+
+dialog::backdrop {
+  background: var(--st-color-overlay);
+  backdrop-filter: blur(4px);
+}

@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Showcase-specific styles
+   These are NOT part of the Sitara library — they style the demo site only.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Section layout
+   ------------------------------------------------------------------------- */
+
+.sc-section {
+  padding-block: var(--st-space-8);
+  border-bottom: 1px solid var(--st-color-border-subtle);
+  scroll-margin-top: calc(var(--st-banner-height) + var(--st-space-4));
+}
+
+.sc-section:last-of-type {
+  border-bottom: none;
+}
+
+.sc-section-title {
+  font-size: var(--st-text-md);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+  margin: 0 0 var(--st-space-1);
+}
+
+.sc-section-desc {
+  font-size: var(--st-text-xs);
+  color: var(--st-color-text-secondary);
+  margin: 0 0 var(--st-space-4);
+  max-width: 640px;
+}
+
+.sc-section-desc code {
+  font-size: 0.9em;
+}
+
+/* -------------------------------------------------------------------------
+   Demo block (shows a component with a label)
+   ------------------------------------------------------------------------- */
+
+.sc-demo {
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-card-radius);
+  overflow: hidden;
+  margin-bottom: var(--st-space-3);
+}
+
+.sc-demo:last-child {
+  margin-bottom: 0;
+}
+
+.sc-demo__label {
+  padding: var(--st-space-1\.5) var(--st-space-3);
+  background: var(--st-color-bg-subtle);
+  border-bottom: 1px solid var(--st-color-border);
+  font-size: var(--st-text-2xs);
+  font-weight: var(--st-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--st-tracking-wider);
+  color: var(--st-color-text-tertiary);
+}
+
+.sc-demo__body {
+  padding: var(--st-space-4);
+  background: var(--st-color-surface);
+}
+
+/* -------------------------------------------------------------------------
+   Color swatches
+   ------------------------------------------------------------------------- */
+
+.sc-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+}
+
+.sc-swatch__color {
+  height: 56px;
+  border-radius: var(--st-radius-lg);
+  box-shadow: var(--st-shadow-xs);
+}
+
+.sc-swatch__label {
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-medium);
+  color: var(--st-color-text-secondary);
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   Theme cards
+   ------------------------------------------------------------------------- */
+
+.sc-theme-card {
+  border: 1.5px solid var(--st-color-border);
+  border-radius: var(--st-card-radius);
+  overflow: hidden;
+  transition: all var(--st-transition-base);
+}
+
+.sc-theme-card--active {
+  border-color: var(--st-color-accent);
+  box-shadow: 0 0 0 3px var(--st-color-accent-muted);
+}
+
+.sc-theme-card[data-theme="banking"] .sc-theme-card__bar { background: #1A3A6B; }
+.sc-theme-card[data-theme="fintech"]  .sc-theme-card__bar { background: linear-gradient(135deg, #7C3AED, #06B6D4); }
+.sc-theme-card[data-theme="insurance"] .sc-theme-card__bar { background: #065F46; }
+
+.sc-theme-card__bar {
+  height: 6px;
+}
+
+.sc-theme-card__body {
+  padding: var(--st-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-2);
+  background: var(--st-color-surface);
+}
+
+.sc-theme-card__body strong {
+  font-size: var(--st-text-sm);
+  font-weight: var(--st-font-semibold);
+  color: var(--st-color-text);
+}
+
+.sc-theme-card__body p {
+  font-size: var(--st-text-xs);
+  color: var(--st-color-text-secondary);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Grid demo cells
+   ------------------------------------------------------------------------- */
+
+.sc-grid-cell {
+  background: var(--st-color-accent-subtle);
+  border: 1px solid var(--st-color-accent-border);
+  color: var(--st-color-accent-text);
+  border-radius: var(--st-radius-md);
+  padding: var(--st-space-2);
+  font-size: var(--st-text-xs);
+  font-weight: var(--st-font-semibold);
+  text-align: center;
+  font-feature-settings: "tnum";
+}
+
+/* -------------------------------------------------------------------------
+   Collapsible sidebar groups (details/summary)
+   ------------------------------------------------------------------------- */
+
+details.st-sidebar__group {
+  list-style: none;
+}
+
+details.st-sidebar__group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+details.st-sidebar__group > summary::-webkit-details-marker { display: none; }
+details.st-sidebar__group > summary::marker { display: none; }
+
+details.st-sidebar__group > summary::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+details.st-sidebar__group[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+/* -------------------------------------------------------------------------
+   Attribute spec table
+   ------------------------------------------------------------------------- */
+
+.sc-spec {
+  margin: var(--st-space-4) 0 var(--st-space-6);
+  border: 1px solid var(--st-color-border);
+  border-radius: var(--st-card-radius);
+  overflow: hidden;
+  font-size: var(--st-text-xs);
+}
+
+.sc-spec__header {
+  padding: var(--st-space-2) var(--st-space-4);
+  background: var(--st-color-bg-subtle);
+  border-bottom: 1px solid var(--st-color-border);
+  font-size: var(--st-text-2xs);
+  font-weight: var(--st-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--st-tracking-wider);
+  color: var(--st-color-text-tertiary);
+}
+
+.sc-spec table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sc-spec thead th {
+  padding: var(--st-space-2) var(--st-space-4);
+  background: var(--st-color-bg-subtle);
+  text-align: left;
+  font-size: var(--st-text-2xs);
+  font-weight: var(--st-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--st-tracking-wider);
+  color: var(--st-color-text-tertiary);
+  border-bottom: 1px solid var(--st-color-border);
+}
+
+.sc-spec thead th:first-child { width: 35%; }
+
+.sc-spec tbody tr {
+  border-bottom: 1px solid var(--st-color-border-subtle);
+}
+
+.sc-spec tbody tr:last-child {
+  border-bottom: none;
+}
+
+.sc-spec tbody tr:hover {
+  background: var(--st-color-bg-subtle);
+}
+
+.sc-spec td {
+  padding: var(--st-space-2) var(--st-space-4);
+  vertical-align: top;
+  color: var(--st-color-text-secondary);
+  line-height: 1.5;
+}
+
+.sc-spec td:first-child {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-text-2xs);
+  color: var(--st-color-accent-text);
+  white-space: nowrap;
+}
+
+.sc-spec td code {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-text-2xs);
+  background: var(--st-color-accent-subtle);
+  color: var(--st-color-accent-text);
+  padding: 1px 5px;
+  border-radius: var(--st-radius-sm);
+}
+
+/* Category chip shown in spec header row */
+.sc-spec__cat {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: var(--st-font-semibold);
+  letter-spacing: 0.02em;
+  background: var(--st-color-accent-subtle);
+  color: var(--st-color-accent-text);
+  margin-left: var(--st-space-2);
+  vertical-align: middle;
+}

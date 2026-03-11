@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Sitara — FinTech Theme
+   Modern, bold, innovative. Violet + cyan. Think Stripe, Brex, Razorpay.
+   Usage: <html data-theme="fintech"> or any ancestor element.
+   ========================================================================== */
+
+[data-theme="fintech"] {
+  /* Primary palette — vivid violet */
+  --st-primary-50:  #F5F3FF;
+  --st-primary-100: #EDE9FE;
+  --st-primary-200: #DDD6FE;
+  --st-primary-300: #C4B5FD;
+  --st-primary-400: #A78BFA;
+  --st-primary-500: #8B5CF6;
+  --st-primary-600: #7C3AED;
+  --st-primary-700: #6D28D9;
+  --st-primary-800: #5B21B6;
+  --st-primary-900: #4C1D95;
+
+  /* Secondary — electric cyan */
+  --st-secondary-300: #67E8F9;
+  --st-secondary-400: #22D3EE;
+  --st-secondary-500: #06B6D4;
+  --st-secondary-600: #0891B2;
+  --st-secondary-700: #0E7490;
+
+  /* Semantic overrides */
+  --st-color-accent:        var(--st-primary-600);
+  --st-color-accent-hover:  var(--st-primary-700);
+  --st-color-accent-active: var(--st-primary-800);
+  --st-color-accent-subtle: var(--st-primary-50);
+  --st-color-accent-muted:  var(--st-primary-100);
+  --st-color-accent-border: var(--st-primary-200);
+  --st-color-accent-text:   var(--st-primary-700);
+  --st-color-accent-on:     #FFFFFF;
+
+  /* Cyan secondary accent */
+  --st-color-cyan:          var(--st-secondary-500);
+  --st-color-cyan-hover:    var(--st-secondary-600);
+  --st-color-cyan-subtle:   #ECFEFF;
+  --st-color-cyan-text:     var(--st-secondary-700);
+  --st-color-cyan-on:       #FFFFFF;
+
+  /* Surfaces — very light, near white */
+  --st-color-bg:             #FAFAFB;
+  --st-color-bg-subtle:      #F4F4F6;
+  --st-color-surface:        #FFFFFF;
+  --st-color-surface-raised: #FFFFFF;
+  --st-color-surface-sunken: #F4F4F6;
+
+  /* Text — near-black with cool tint */
+  --st-color-text:           #0D0D14;
+  --st-color-text-secondary: #3D3C52;
+  --st-color-text-tertiary:  #7B7A96;
+  --st-color-text-disabled:  #C4C3D6;
+  --st-color-text-link:      var(--st-primary-600);
+  --st-color-text-link-hover: var(--st-primary-800);
+
+  /* Borders — subtle */
+  --st-color-border:        #E4E4EE;
+  --st-color-border-strong: #D0D0DF;
+  --st-color-border-subtle: #F0F0F8;
+  --st-color-border-accent: var(--st-primary-500);
+
+  /* Banner — gradient purple */
+  --st-banner-bg:             linear-gradient(135deg, #6D28D9 0%, #5B21B6 100%);
+  --st-banner-border:         transparent;
+  --st-banner-text:           #FFFFFF;
+  --st-banner-text-secondary: rgba(255,255,255,0.7);
+
+  /* Sidebar — light with purple active states */
+  --st-sidebar-bg:           #FFFFFF;
+  --st-sidebar-border:       #E4E4EE;
+  --st-sidebar-text:         #3D3C52;
+  --st-sidebar-text-active:  var(--st-primary-700);
+  --st-sidebar-bg-active:    var(--st-primary-50);
+  --st-sidebar-bg-hover:     #F4F4F6;
+  --st-sidebar-icon:         #7B7A96;
+  --st-sidebar-icon-active:  var(--st-primary-600);
+
+  /* Button radius — rounded for modern feel */
+  --st-btn-radius: var(--st-radius-lg);
+
+  /* Input radius */
+  --st-input-radius: var(--st-radius-lg);
+
+  /* Card */
+  --st-card-radius:  var(--st-radius-2xl);
+  --st-card-shadow:  0 0 0 1px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.07);
+}
+
+/* FinTech dark mode */
+[data-theme="fintech"][data-color-scheme="dark"],
+[data-theme="fintech"].st-dark {
+  --st-color-bg:             #08080F;
+  --st-color-bg-subtle:      #0F0E1A;
+  --st-color-surface:        #131220;
+  --st-color-surface-raised: #1C1B2E;
+  --st-color-surface-sunken: #08080F;
+
+  --st-color-text:           #F0EFFF;
+  --st-color-text-secondary: #9E9CC0;
+  --st-color-text-tertiary:  #5A587A;
+  --st-color-text-disabled:  #2E2C48;
+
+  --st-color-border:        #1E1C33;
+  --st-color-border-strong: #2C2A47;
+  --st-color-border-subtle: #110F24;
+
+  --st-color-accent:        var(--st-primary-400);
+  --st-color-accent-hover:  var(--st-primary-300);
+  --st-color-accent-subtle: rgba(139, 92, 246, 0.12);
+  --st-color-accent-muted:  rgba(139, 92, 246, 0.20);
+  --st-color-accent-text:   var(--st-primary-300);
+
+  --st-sidebar-bg:           #0F0E1A;
+  --st-sidebar-border:       #1E1C33;
+  --st-sidebar-text:         rgba(255,255,255,0.6);
+  --st-sidebar-text-active:  #FFFFFF;
+  --st-sidebar-bg-active:    rgba(139, 92, 246, 0.15);
+  --st-sidebar-bg-hover:     rgba(255,255,255,0.04);
+  --st-sidebar-icon:         rgba(255,255,255,0.35);
+  --st-sidebar-icon-active:  var(--st-primary-400);
+
+  --st-banner-bg:            linear-gradient(135deg, #4C1D95 0%, #3B1674 100%);
+}

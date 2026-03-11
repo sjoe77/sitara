@@ -1,0 +1,44 @@
+/* ================================================================
+   Sitara Icons — sizing and display helpers
+   All icons in Sitara use inline SVG (Lucide-compatible paths).
+   Apply .st-icon to an <svg> element for proper sizing.
+   ================================================================ */
+
+/* Base icon — applies to <svg> elements */
+.st-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Explicit size modifiers */
+.st-icon--xs  { width: 12px; height: 12px; }
+.st-icon--sm  { width: 16px; height: 16px; }
+.st-icon--md  { width: 20px; height: 20px; }
+.st-icon--lg  { width: 24px; height: 24px; }
+.st-icon--xl  { width: 32px; height: 32px; }
+.st-icon--2xl { width: 40px; height: 40px; }
+
+/* Colour helpers */
+.st-icon--muted   { color: var(--st-color-text-tertiary); }
+.st-icon--accent  { color: var(--st-color-accent); }
+.st-icon--success { color: var(--st-color-success); }
+.st-icon--warning { color: var(--st-color-warning); }
+.st-icon--danger  { color: var(--st-color-danger); }
+.st-icon--info    { color: var(--st-color-info); }
+
+/* Spin animation for loader/spinner icons */
+.st-icon--spin {
+  animation: st-icon-spin 1s linear infinite;
+}
+@keyframes st-icon-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
