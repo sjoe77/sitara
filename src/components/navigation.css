@@ -490,10 +490,27 @@
 #st-sidebar-toggle:checked ~ .st-app .st-sidebar .st-sidebar__section-label {
   opacity: 0;
   pointer-events: none;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Zero out horizontal padding so the 64px column is fully available for icons */
+#st-sidebar-toggle:checked ~ .st-app .st-sidebar .st-sidebar__nav {
+  padding-inline: 0;
 }
 
 #st-sidebar-toggle:checked ~ .st-app .st-sidebar .st-sidebar__item {
   justify-content: center;
+  padding-inline: 0;
+  gap: 0;
+}
+
+/* Guarantee icon never shrinks below its declared size */
+#st-sidebar-toggle:checked ~ .st-app .st-sidebar .st-sidebar__item-icon {
+  min-width: 20px;
+  min-height: 20px;
 }
 
 #st-sidebar-toggle:checked ~ .st-app .st-sidebar .st-sidebar__user-info {
