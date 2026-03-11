@@ -23,6 +23,7 @@
 @import "./themes/banking.css";
 @import "./themes/fintech.css";
 @import "./themes/insurance.css";
+@import "./themes/dark.css";
 
 /* 3. CSS Reset */
 @import "./reset.css";

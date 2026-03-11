@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="banking">
+<html lang="en" data-theme="fintech">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +57,10 @@
             <span style="width:12px;height:12px;border-radius:50%;background:#065F46;display:inline-block;flex-shrink:0;"></span>
             Insurance
           </a>
+          <a href="#" class="st-dropdown__item" onclick="setTheme('dark')">
+            <span style="width:12px;height:12px;border-radius:50%;background:#16161F;border:1px solid #6366F1;display:inline-block;flex-shrink:0;"></span>
+            Dark
+          </a>
           <a href="#" class="st-dropdown__item" onclick="setTheme('')">
             <span style="width:12px;height:12px;border-radius:50%;background:#4F46E5;display:inline-block;flex-shrink:0;"></span>
             Default
@@ -82,7 +86,7 @@
         <a href="#" class="st-banner__avatar st-dropdown__trigger" aria-label="User menu">RK</a>
         <div class="st-dropdown__menu" style="min-width:200px;">
           <div style="padding:var(--st-space-3) var(--st-space-4);border-bottom:1px solid var(--st-color-border);margin-bottom:var(--st-space-1\.5);">
-            <div style="font-weight:600;font-size:var(--st-text-sm);color:var(--st-color-text);">Rajesh Kumar</div>
+            <div style="font-weight:600;font-size:var(--st-text-sm);color:var(--st-color-text);">Superhero Engineer</div>
             <div style="font-size:var(--st-text-xs);color:var(--st-color-text-secondary);">rajesh@sitara.io</div>
           </div>
           <a href="#" class="st-dropdown__item">
@@ -218,7 +222,7 @@
       <a href="#" class="st-sidebar__user">
         <div class="st-sidebar__user-avatar">RK</div>
         <div class="st-sidebar__user-info">
-          <div class="st-sidebar__user-name">Rajesh Kumar</div>
+          <div class="st-sidebar__user-name">Superhero Engineer</div>
           <div class="st-sidebar__user-role">Administrator</div>
         </div>
       </a>
@@ -325,6 +329,15 @@
               <span class="st-badge st-badge--default">data-theme="insurance"</span>
               <p>Forest teal + amber. Stable and warm.</p>
               <button class="st-btn st-btn--primary st-btn--sm" onclick="setTheme('insurance')">Apply</button>
+            </div>
+          </div>
+          <div class="sc-theme-card" data-theme="dark">
+            <div class="sc-theme-card__bar"></div>
+            <div class="sc-theme-card__body">
+              <strong>Dark</strong>
+              <span class="st-badge st-badge--default">data-theme="dark"</span>
+              <p>Deep charcoal + electric indigo. Power-user ready.</p>
+              <button class="st-btn st-btn--primary st-btn--sm" onclick="setTheme('dark')">Apply</button>
             </div>
           </div>
         </div>

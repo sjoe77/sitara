@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Sitara — Dark Theme
+   Deep charcoal surfaces, electric indigo accent. Think terminal, power user.
+   Usage: <html data-theme="dark">
+   ========================================================================== */
+
+[data-theme="dark"] {
+  /* Primary palette — electric indigo */
+  --st-primary-50:  #EEEEFF;
+  --st-primary-100: #E0E0FF;
+  --st-primary-200: #C7C7FE;
+  --st-primary-300: #A5A5FF;
+  --st-primary-400: #818BF8;
+  --st-primary-500: #6366F1;
+  --st-primary-600: #4F46E5;
+  --st-primary-700: #4338CA;
+  --st-primary-800: #3730A3;
+  --st-primary-900: #312E81;
+
+  /* Surfaces — deep charcoal */
+  --st-color-bg:             #0C0C10;
+  --st-color-bg-subtle:      #111118;
+  --st-color-surface:        #16161F;
+  --st-color-surface-raised: #1E1E2A;
+  --st-color-surface-sunken: #0C0C10;
+  --st-color-overlay:        rgb(0 0 0 / 0.6);
+
+  /* Text */
+  --st-color-text:           #E8E8F0;
+  --st-color-text-secondary: #9898B4;
+  --st-color-text-tertiary:  #55556A;
+  --st-color-text-disabled:  #2E2E3F;
+  --st-color-text-inverse:   #0C0C10;
+  --st-color-text-on-accent: #FFFFFF;
+  --st-color-text-link:      #818BF8;
+  --st-color-text-link-hover: #A5A5FF;
+
+  /* Borders */
+  --st-color-border:        #22222F;
+  --st-color-border-strong: #30303F;
+  --st-color-border-subtle: #18181F;
+  --st-color-border-accent: var(--st-primary-500);
+
+  /* Accent */
+  --st-color-accent:        #6366F1;
+  --st-color-accent-hover:  #818BF8;
+  --st-color-accent-active: #4F46E5;
+  --st-color-accent-subtle: rgba(99, 102, 241, 0.12);
+  --st-color-accent-muted:  rgba(99, 102, 241, 0.20);
+  --st-color-accent-border: rgba(99, 102, 241, 0.35);
+  --st-color-accent-text:   #A5A5FF;
+  --st-color-accent-on:     #FFFFFF;
+
+  /* Status */
+  --st-color-success:        #34D399;
+  --st-color-success-subtle: rgba(52, 211, 153, 0.12);
+  --st-color-success-text:   #6EE7B7;
+  --st-color-success-border: rgba(52, 211, 153, 0.25);
+
+  --st-color-warning:        #FBBF24;
+  --st-color-warning-subtle: rgba(251, 191, 36, 0.12);
+  --st-color-warning-text:   #FCD34D;
+  --st-color-warning-border: rgba(251, 191, 36, 0.25);
+
+  --st-color-danger:         #F87171;
+  --st-color-danger-subtle:  rgba(248, 113, 113, 0.12);
+  --st-color-danger-text:    #FCA5A5;
+  --st-color-danger-border:  rgba(248, 113, 113, 0.25);
+  --st-color-danger-hover:   #EF4444;
+  --st-color-danger-active:  #DC2626;
+
+  --st-color-info:           #60A5FA;
+  --st-color-info-subtle:    rgba(96, 165, 250, 0.12);
+  --st-color-info-text:      #93C5FD;
+  --st-color-info-border:    rgba(96, 165, 250, 0.25);
+
+  /* Shadows — more visible on dark surfaces */
+  --st-shadow-xs:  0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --st-shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --st-shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --st-shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --st-shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+
+  /* Focus ring */
+  --st-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
+
+  /* Banner — dark with subtle accent glow */
+  --st-banner-bg:             linear-gradient(135deg, #1A1A2E 0%, #16161F 100%);
+  --st-banner-border:         #22222F;
+  --st-banner-text:           #E8E8F0;
+  --st-banner-text-secondary: #9898B4;
+
+  /* Sidebar */
+  --st-sidebar-bg:           #111118;
+  --st-sidebar-border:       #22222F;
+  --st-sidebar-text:         #9898B4;
+  --st-sidebar-text-active:  #E8E8F0;
+  --st-sidebar-bg-active:    rgba(99, 102, 241, 0.15);
+  --st-sidebar-bg-hover:     rgba(255, 255, 255, 0.04);
+  --st-sidebar-icon:         #55556A;
+  --st-sidebar-icon-active:  #818BF8;
+
+  /* Input */
+  --st-input-bg:           #16161F;
+  --st-input-border:       #30303F;
+  --st-input-border-focus: #6366F1;
+  --st-input-color:        #E8E8F0;
+  --st-input-placeholder:  #55556A;
+
+  /* Card */
+  --st-card-border:  #22222F;
+  --st-card-shadow:  0 0 0 1px rgb(255 255 255 / 0.05), 0 4px 12px rgb(0 0 0 / 0.4);
+
+  /* Button radius — keep default */
+  --st-btn-radius: var(--st-radius-md);
+}
