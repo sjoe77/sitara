@@ -1701,21 +1701,16 @@
   }, { rootMargin: '-20% 0px -70% 0px' });
   sections.forEach(s => observer.observe(s));
 
-  // Workflow drill-down: prevent scroll jump when :target hash changes
+  // Workflow drill-down: update :target without any scroll jump
+  // history.pushState changes the URL fragment (which re-evaluates :target CSS)
+  // but does NOT trigger the browser's scroll-to-anchor behaviour.
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a.st-wf-stage--has-sub, a.st-wf-breadcrumb__link');
     if (!link) return;
     var href = link.getAttribute('href');
     if (!href || !href.startsWith('#wf-')) return;
     e.preventDefault();
-    var savedY = window.scrollY;
-    location.hash = href.slice(1);
-    // Double rAF: browser scrolls between frames, second rAF runs after that
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        window.scrollTo(0, savedY);
-      });
-    });
+    history.pushState(null, '', href);
   });
 </script>
 </body>
