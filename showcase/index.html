@@ -1701,15 +1701,21 @@
   }, { rootMargin: '-20% 0px -70% 0px' });
   sections.forEach(s => observer.observe(s));
 
-  // Workflow drill-down: update :target without any scroll jump
-  // history.pushState changes the URL fragment (which re-evaluates :target CSS)
-  // but does NOT trigger the browser's scroll-to-anchor behaviour.
+  // Workflow drill-down — JS panel switching (no :target, no scroll jump)
+  function wfShow(container, targetId) {
+    container.querySelectorAll('.st-wf-panel').forEach(function(p) {
+      p.style.display = (p.id === targetId) ? 'block' : 'none';
+    });
+  }
+
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a.st-wf-stage--has-sub, a.st-wf-breadcrumb__link');
     if (!link) return;
     var href = link.getAttribute('href');
     if (!href || !href.startsWith('#wf-')) return;
     e.preventDefault();
+    var container = link.closest('.st-wf-container');
+    if (container) wfShow(container, href.slice(1));
     history.pushState(null, '', href);
   });
 </script>
